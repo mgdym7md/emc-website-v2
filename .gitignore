@@ -1,0 +1,15 @@
+# IDE
+.idea/
+
+# Dependencies
+node_modules/
+
+# OS
+.DS_Store
+
+# Claude
+.claude/
+
+# Documents (optional - remove if you want these in repo)
+*.pdf
+*.docx

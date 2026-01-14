@@ -1,0 +1,11 @@
+{
+  "name": "emc-website",
+  "version": "1.0.0",
+  "description": "EMC - Engineering Marble Contractors - Premium Egyptian Stone",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx serve .",
+    "dev": "npx live-server --port=3000"
+  },
+  "private": true
+}

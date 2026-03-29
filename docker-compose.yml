@@ -9,7 +9,7 @@ services:
     restart: unless-stopped
     environment:
       DATABASE_CLIENT: postgres
-      DATABASE_HOST: postgres
+      DATABASE_HOST: emc-postgres
       DATABASE_PORT: 5432
       DATABASE_NAME: ${DATABASE_NAME:-strapi}
       DATABASE_USERNAME: ${DATABASE_USERNAME:-strapi}
@@ -20,19 +20,18 @@ services:
       APP_KEYS: ${APP_KEYS:-key1,key2,key3,key4}
       API_TOKEN_SALT: ${API_TOKEN_SALT:-your-api-token-salt}
       TRANSFER_TOKEN_SALT: ${TRANSFER_TOKEN_SALT:-your-transfer-token-salt}
-      NODE_ENV: ${NODE_ENV:-development}
+      NODE_ENV: ${NODE_ENV:-production}
     volumes:
       - ./strapi:/srv/app
       - strapi_node_modules:/srv/app/node_modules
-    ports:
-      - '1337:1337'
     depends_on:
-      postgres:
+      emc-postgres:
         condition: service_healthy
     networks:
-      - emc-network
+      - ngnix_default
+      - default
 
-  postgres:
+  emc-postgres:
     image: postgres:15-alpine
     container_name: emc-postgres
     restart: unless-stopped
@@ -40,17 +39,16 @@ services:
       POSTGRES_DB: ${DATABASE_NAME:-strapi}
       POSTGRES_USER: ${DATABASE_USERNAME:-strapi}
       POSTGRES_PASSWORD: ${DATABASE_PASSWORD:-strapi_password}
+      PGDATA: /var/lib/postgresql/data/pgdata
     volumes:
       - postgres_data:/var/lib/postgresql/data
-    ports:
-      - '5432:5432'
     healthcheck:
       test: ['CMD-SHELL', 'pg_isready -U ${DATABASE_USERNAME:-strapi} -d ${DATABASE_NAME:-strapi}']
       interval: 5s
       timeout: 5s
       retries: 5
     networks:
-      - emc-network
+      - default
 
   # Optional: pgAdmin for database management
   pgadmin:
@@ -60,12 +58,11 @@ services:
     environment:
       PGADMIN_DEFAULT_EMAIL: ${PGADMIN_EMAIL:-admin@emc-egypt.com}
       PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD:-admin}
-    ports:
-      - '5050:80'
     depends_on:
-      - postgres
+      - emc-postgres
     networks:
-      - emc-network
+      - ngnix_default
+      - default
     profiles:
       - tools
 
@@ -74,5 +71,10 @@ volumes:
   strapi_node_modules:
 
 networks:
-  emc-network:
+  default:
     driver: bridge
+    ipam:
+      driver: default
+  ngnix_default:
+    name: ngnix_default
+    external: true

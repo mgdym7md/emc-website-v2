@@ -1,6 +1,25 @@
 version: '3.8'
 
 services:
+  # Next.js Frontend
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: emc-frontend
+    restart: unless-stopped
+    environment:
+      STRAPI_URL: http://emc-strapi:1337
+      NEXT_PUBLIC_STRAPI_URL: ${NEXT_PUBLIC_STRAPI_URL:-http://localhost:1337}
+      STRAPI_API_TOKEN: ${STRAPI_API_TOKEN:-}
+      NEXT_PUBLIC_SITE_URL: ${NEXT_PUBLIC_SITE_URL:-http://localhost:3000}
+    depends_on:
+      - strapi
+    networks:
+      - ngnix_default
+      - default
+
+  # Strapi CMS
   strapi:
     build:
       context: ./strapi
@@ -21,6 +40,7 @@ services:
       API_TOKEN_SALT: ${API_TOKEN_SALT:-your-api-token-salt}
       TRANSFER_TOKEN_SALT: ${TRANSFER_TOKEN_SALT:-your-transfer-token-salt}
       NODE_ENV: ${NODE_ENV:-production}
+      CLIENT_URL: ${CLIENT_URL:-http://localhost:3000}
     volumes:
       - ./strapi:/srv/app
       - strapi_node_modules:/srv/app/node_modules
@@ -31,6 +51,7 @@ services:
       - ngnix_default
       - default
 
+  # PostgreSQL Database
   emc-postgres:
     image: postgres:15-alpine
     container_name: emc-postgres
@@ -49,22 +70,6 @@ services:
       retries: 5
     networks:
       - default
-
-  # Optional: pgAdmin for database management
-  pgadmin:
-    image: dpage/pgadmin4:latest
-    container_name: emc-pgadmin
-    restart: unless-stopped
-    environment:
-      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_EMAIL:-admin@emc-egypt.com}
-      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD:-admin}
-    depends_on:
-      - emc-postgres
-    networks:
-      - ngnix_default
-      - default
-    profiles:
-      - tools
 
 volumes:
   postgres_data:

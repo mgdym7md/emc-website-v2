@@ -130,6 +130,7 @@ function getStrapiMediaUrl(url: string | null | undefined): string {
 async function fetchAPI<T>(endpoint: string, fallback: T): Promise<T> {
   try {
     const url = `${STRAPI_API_URL}/api${endpoint}`
+    console.log(`[Strapi] Fetching: ${url}`)
     const res = await fetch(url, {
       headers: {
         'Content-Type': 'application/json',
@@ -139,17 +140,15 @@ async function fetchAPI<T>(endpoint: string, fallback: T): Promise<T> {
     })
 
     if (!res.ok) {
-      console.warn(`Strapi API returned ${res.status} for ${endpoint}`)
+      console.error(`[Strapi] API returned ${res.status} for ${endpoint}`)
       return fallback
     }
 
     const json = await res.json()
+    console.log(`[Strapi] Success: ${endpoint} (${Array.isArray(json.data) ? json.data.length + ' items' : 'single'})`)
     return json.data
-  } catch (error) {
-    // Only log in development
-    if (process.env.NODE_ENV === 'development') {
-      console.warn(`Strapi fetch failed for ${endpoint}, using fallback data`)
-    }
+  } catch (error: any) {
+    console.error(`[Strapi] Fetch FAILED for ${endpoint}:`, error?.message || error)
     return fallback
   }
 }

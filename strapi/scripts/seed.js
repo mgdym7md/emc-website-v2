@@ -57,17 +57,17 @@ async function seed() {
     console.log(`⏭️  Services already exist (${existingServices.length}), skipping`);
   }
 
-  // --- Seed About ---
-  const existingAbout = await app.entityService.findMany('api::about.about');
-  if (!existingAbout || (Array.isArray(existingAbout) && existingAbout.length === 0) || !existingAbout.id) {
+  // --- Seed About (single type - use db query to avoid i18n plugin issue) ---
+  const existingAbout = await app.db.query('api::about.about').findOne({});
+  if (!existingAbout) {
     const aboutData = seedData.about;
-    await app.entityService.create('api::about.about', {
+    await app.db.query('api::about.about').create({
       data: {
         title: aboutData.title,
         subtitle: aboutData.subtitle,
         description: aboutData.description.join('\n\n'),
-        stats: aboutData.stats,
-        publishedAt: new Date(),
+        stats: JSON.stringify(aboutData.stats),
+        published_at: new Date(),
       },
     });
     console.log('✅ Seeded about content');
@@ -75,11 +75,11 @@ async function seed() {
     console.log('⏭️  About already exists, skipping');
   }
 
-  // --- Seed Contact ---
-  const existingContact = await app.entityService.findMany('api::contact.contact');
-  if (!existingContact || (Array.isArray(existingContact) && existingContact.length === 0) || !existingContact.id) {
+  // --- Seed Contact (single type - use db query to avoid i18n plugin issue) ---
+  const existingContact = await app.db.query('api::contact.contact').findOne({});
+  if (!existingContact) {
     const contactData = seedData.contact;
-    await app.entityService.create('api::contact.contact', {
+    await app.db.query('api::contact.contact').create({
       data: {
         location: contactData.location,
         phone: contactData.phone,
@@ -88,7 +88,7 @@ async function seed() {
         instagram: contactData.socialLinks.instagram,
         facebook: contactData.socialLinks.facebook,
         whatsapp: contactData.socialLinks.whatsapp || '',
-        publishedAt: new Date(),
+        published_at: new Date(),
       },
     });
     console.log('✅ Seeded contact content');

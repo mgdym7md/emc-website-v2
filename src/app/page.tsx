@@ -5,7 +5,7 @@ import Services from '@/components/sections/Services'
 import Contact from '@/components/sections/Contact'
 import { getProducts, getServices, getAboutContent, getContactInfo } from '@/lib/strapi'
 
-export const revalidate = 60 // Revalidate every 60 seconds
+export const dynamic = 'force-dynamic' // Always fetch fresh data from Strapi
 
 export default async function Home() {
   // Fetch data from Strapi CMS (with fallback to static data)

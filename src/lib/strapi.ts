@@ -136,7 +136,7 @@ async function fetchAPI<T>(endpoint: string, fallback: T): Promise<T> {
         'Content-Type': 'application/json',
         ...(STRAPI_TOKEN && { Authorization: `Bearer ${STRAPI_TOKEN}` }),
       },
-      next: { revalidate: 60 }, // Revalidate every 60 seconds
+      cache: 'no-store', // Always fetch fresh data
     })
 
     if (!res.ok) {

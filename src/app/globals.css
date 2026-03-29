@@ -1,0 +1,174 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&family=Amiri:wght@400;700&family=Tajawal:wght@300;400;500;700&display=swap');
+
+@layer base {
+  :root {
+    --accent-gold: #c9a962;
+    --accent-cream: #f5f0e8;
+    --accent-rose: #d4a5a5;
+    --deep-brown: #5c4033;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-body antialiased;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-dark-primary;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-accent-gold rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-accent-gold/80;
+  }
+}
+
+@layer components {
+  .section-padding {
+    @apply py-20 md:py-32 px-4 md:px-8;
+  }
+
+  .container-custom {
+    @apply max-w-7xl mx-auto;
+  }
+
+  .heading-primary {
+    @apply font-heading text-4xl md:text-5xl lg:text-6xl font-light tracking-wide;
+  }
+
+  .heading-secondary {
+    @apply font-heading text-3xl md:text-4xl font-light tracking-wide;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-accent-gold via-primary-300 to-accent-gold bg-clip-text text-transparent;
+  }
+
+  .btn-primary {
+    @apply px-8 py-3 bg-accent-gold text-dark-primary font-medium tracking-wider uppercase text-sm
+           transition-all duration-300 hover:bg-accent-cream hover:shadow-lg hover:shadow-accent-gold/20;
+  }
+
+  .btn-secondary {
+    @apply px-8 py-3 border border-accent-gold/50 text-accent-gold font-medium tracking-wider uppercase text-sm
+           transition-all duration-300 hover:bg-accent-gold/10 hover:border-accent-gold;
+  }
+
+  .glass-effect {
+    @apply bg-white/5 backdrop-blur-md border border-white/10;
+  }
+
+  .card-hover {
+    @apply transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-accent-gold/10;
+  }
+}
+
+@layer utilities {
+  .animate-delay-100 {
+    animation-delay: 100ms;
+  }
+  .animate-delay-200 {
+    animation-delay: 200ms;
+  }
+  .animate-delay-300 {
+    animation-delay: 300ms;
+  }
+  .animate-delay-400 {
+    animation-delay: 400ms;
+  }
+  .animate-delay-500 {
+    animation-delay: 500ms;
+  }
+
+  /* RTL Support */
+  [dir="rtl"] .rtl-flip {
+    transform: scaleX(-1);
+  }
+
+  [dir="rtl"] .text-left {
+    text-align: right;
+  }
+
+  [dir="rtl"] .text-right {
+    text-align: left;
+  }
+}
+
+/* Hero Background Pattern */
+.hero-pattern {
+  background-image:
+    linear-gradient(135deg, rgba(201, 169, 98, 0.03) 25%, transparent 25%),
+    linear-gradient(225deg, rgba(201, 169, 98, 0.03) 25%, transparent 25%),
+    linear-gradient(45deg, rgba(201, 169, 98, 0.03) 25%, transparent 25%),
+    linear-gradient(315deg, rgba(201, 169, 98, 0.03) 25%, transparent 25%);
+  background-size: 40px 40px;
+  background-position: 0 0, 20px 0, 20px -20px, 0px 20px;
+}
+
+/* Floating shapes animation */
+.floating-shape {
+  position: absolute;
+  border: 1px solid rgba(201, 169, 98, 0.15);
+  border-radius: 2px;
+  animation: float 8s ease-in-out infinite;
+}
+
+.floating-shape:nth-child(1) {
+  width: 60px;
+  height: 60px;
+  top: 20%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.floating-shape:nth-child(2) {
+  width: 100px;
+  height: 100px;
+  top: 60%;
+  right: 15%;
+  animation-delay: 2s;
+}
+
+.floating-shape:nth-child(3) {
+  width: 40px;
+  height: 40px;
+  bottom: 30%;
+  left: 20%;
+  animation-delay: 4s;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(5deg);
+  }
+}
+
+/* Reveal animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}

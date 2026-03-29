@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+
+# Build
+build/
+.cache/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Database (SQLite)
+.tmp/
+*.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# IDE
+.idea/
+.vscode/
+
+# OS
+.DS_Store
+
+# Uploads (if not using cloud storage)
+public/uploads/*
+!public/uploads/.gitkeep

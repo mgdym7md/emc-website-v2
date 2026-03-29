@@ -1,0 +1,231 @@
+{
+  "products": [
+    {
+      "name": "Galala Classic",
+      "type": "marble",
+      "category": "marble",
+      "description": "Premium Egyptian marble with warm beige tones, perfect for elegant interiors.",
+      "specifications": {
+        "origin": "Egypt",
+        "finish": "Polished",
+        "thickness": "20mm, 30mm"
+      }
+    },
+    {
+      "name": "Sunny Marble",
+      "type": "marble",
+      "category": "marble",
+      "description": "Bright golden-hued marble perfect for elegant spaces.",
+      "specifications": {
+        "origin": "Egypt",
+        "finish": "Polished, Honed",
+        "thickness": "20mm, 30mm"
+      }
+    },
+    {
+      "name": "Sinai Pearl",
+      "type": "marble",
+      "category": "marble",
+      "description": "Lustrous pearl-white marble from the Sinai region.",
+      "specifications": {
+        "origin": "Sinai, Egypt",
+        "finish": "Polished",
+        "thickness": "20mm, 30mm"
+      }
+    },
+    {
+      "name": "Milly Grey",
+      "type": "marble",
+      "category": "marble",
+      "description": "Contemporary grey marble with subtle veining.",
+      "specifications": {
+        "origin": "Egypt",
+        "finish": "Polished, Matte",
+        "thickness": "20mm, 30mm"
+      }
+    },
+    {
+      "name": "Imprador",
+      "type": "marble",
+      "category": "marble",
+      "description": "Rich brown marble with dramatic patterns.",
+      "specifications": {
+        "origin": "Egypt",
+        "finish": "Polished",
+        "thickness": "20mm, 30mm"
+      }
+    },
+    {
+      "name": "Breccia",
+      "type": "marble",
+      "category": "marble",
+      "description": "Classic breccia with distinctive angular fragments.",
+      "specifications": {
+        "origin": "Egypt",
+        "finish": "Polished",
+        "thickness": "20mm, 30mm"
+      }
+    },
+    {
+      "name": "Black Star",
+      "type": "granite",
+      "category": "granite",
+      "description": "Deep black granite with sparkling mineral deposits.",
+      "specifications": {
+        "origin": "Egypt",
+        "finish": "Polished, Flamed",
+        "thickness": "20mm, 30mm, 40mm"
+      }
+    },
+    {
+      "name": "New Halayb",
+      "type": "granite",
+      "category": "granite",
+      "description": "Premium Egyptian granite from Halayb region.",
+      "specifications": {
+        "origin": "Halayb, Egypt",
+        "finish": "Polished",
+        "thickness": "20mm, 30mm"
+      }
+    },
+    {
+      "name": "Rosa Nasr",
+      "type": "granite",
+      "category": "granite",
+      "description": "Beautiful pink granite with natural patterns.",
+      "specifications": {
+        "origin": "Egypt",
+        "finish": "Polished",
+        "thickness": "20mm, 30mm"
+      }
+    },
+    {
+      "name": "Red Royal",
+      "type": "granite",
+      "category": "granite",
+      "description": "Majestic red granite for statement surfaces.",
+      "specifications": {
+        "origin": "Egypt",
+        "finish": "Polished, Flamed",
+        "thickness": "20mm, 30mm, 40mm"
+      }
+    },
+    {
+      "name": "Verdi Green",
+      "type": "granite",
+      "category": "granite",
+      "description": "Elegant green granite with unique coloring.",
+      "specifications": {
+        "origin": "Egypt",
+        "finish": "Polished",
+        "thickness": "20mm, 30mm"
+      }
+    },
+    {
+      "name": "Golden Sinai",
+      "type": "granite",
+      "category": "granite",
+      "description": "Warm golden granite from Sinai quarries.",
+      "specifications": {
+        "origin": "Sinai, Egypt",
+        "finish": "Polished",
+        "thickness": "20mm, 30mm"
+      }
+    },
+    {
+      "name": "Hashma Sandstone",
+      "type": "other",
+      "category": "sandstone",
+      "description": "Traditional Egyptian sandstone.",
+      "specifications": {
+        "origin": "Egypt",
+        "finish": "Natural, Honed",
+        "thickness": "30mm, 40mm"
+      }
+    },
+    {
+      "name": "Egyptian Basalt",
+      "type": "other",
+      "category": "basalt",
+      "description": "Dense volcanic basalt for durable applications.",
+      "specifications": {
+        "origin": "Egypt",
+        "finish": "Flamed, Bush-hammered",
+        "thickness": "30mm, 40mm, 50mm"
+      }
+    },
+    {
+      "name": "Mica Stone",
+      "type": "other",
+      "category": "mica",
+      "description": "Shimmering mica stone with natural sparkle.",
+      "specifications": {
+        "origin": "Egypt",
+        "finish": "Natural",
+        "thickness": "10mm, 20mm"
+      }
+    }
+  ],
+  "services": [
+    {
+      "title": "Import & Export",
+      "description": "Global distribution of premium Egyptian stone to markets worldwide with reliable logistics.",
+      "icon": "globe",
+      "order": 1
+    },
+    {
+      "title": "Custom Fabrication",
+      "description": "Precision cutting and finishing to exact specifications for any architectural project.",
+      "icon": "tools",
+      "order": 2
+    },
+    {
+      "title": "Project Consultation",
+      "description": "Expert guidance for architects and designers on stone selection and applications.",
+      "icon": "consultation",
+      "order": 3
+    },
+    {
+      "title": "Timely Delivery",
+      "description": "Efficient supply chain management ensuring your materials arrive when needed.",
+      "icon": "delivery",
+      "order": 4
+    },
+    {
+      "title": "Quality Certification",
+      "description": "Complete documentation and verification for all stone products.",
+      "icon": "certificate",
+      "order": 5
+    },
+    {
+      "title": "Premium Selection",
+      "description": "Hand-selected slabs from the finest Egyptian quarries.",
+      "icon": "premium",
+      "order": 6
+    }
+  ],
+  "about": {
+    "title": "Our Story",
+    "subtitle": "Crafting Excellence Since 2000",
+    "description": [
+      "Engineering Marble Contractors (EMC) was established in 2015, building upon the legacy of EMCO, which has been a cornerstone of the Egyptian stone industry since 2000.",
+      "Our mission is to bring the timeless beauty of Egyptian natural stone to the world, combining traditional craftsmanship with modern precision.",
+      "We take pride in our commitment to quality, sustainability, and customer satisfaction, serving clients across more than 30 countries."
+    ],
+    "stats": [
+      { "value": "25+", "label": "Years Experience" },
+      { "value": "50+", "label": "Stone Varieties" },
+      { "value": "30+", "label": "Countries Served" }
+    ]
+  },
+  "contact": {
+    "location": "Cairo, Egypt",
+    "phone": "+20 XXX XXX XXXX",
+    "email": "info@emc-egypt.com",
+    "socialLinks": {
+      "linkedin": "https://linkedin.com/company/emc-egypt",
+      "instagram": "https://instagram.com/emc_egypt",
+      "facebook": "https://facebook.com/emcegypt"
+    }
+  }
+}

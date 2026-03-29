@@ -10,7 +10,7 @@ ENV STRAPI_DISABLE_UPDATE_NOTIFICATION=true
 ENV STRAPI_HIDE_STARTUP_MESSAGE=true
 
 # Copy package files
-COPY package*.json ./
+COPY package.json ./
 
 # Install ALL dependencies (dev + prod) for build
 RUN npm install --legacy-peer-deps

@@ -19,19 +19,35 @@ export default function Contact({ data }: ContactProps) {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
+    setError(null)
 
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000))
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      })
 
-    setIsSubmitting(false)
-    setSubmitted(true)
-    setFormData({ name: '', email: '', interest: '', message: '' })
+      const data = await res.json()
 
-    setTimeout(() => setSubmitted(false), 5000)
+      if (!res.ok) {
+        setError(data.error || 'Something went wrong. Please try again.')
+        return
+      }
+
+      setSubmitted(true)
+      setFormData({ name: '', email: '', interest: '', message: '' })
+      setTimeout(() => setSubmitted(false), 5000)
+    } catch {
+      setError('Network error. Please check your connection and try again.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -202,6 +218,17 @@ export default function Contact({ data }: ContactProps) {
                   className="text-center text-accent-gold"
                 >
                   Thank you! We&apos;ll be in touch soon.
+                </motion.p>
+              )}
+
+              {/* Error Message */}
+              {error && (
+                <motion.p
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="text-center text-red-400"
+                >
+                  {error}
                 </motion.p>
               )}
             </form>

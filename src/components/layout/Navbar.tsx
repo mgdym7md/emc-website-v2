@@ -2,12 +2,17 @@
 
 import { useState, useEffect, useCallback } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname, useRouter } from 'next/navigation'
 import { useTheme } from '@/components/providers/ThemeProvider'
 import { useLanguage } from '@/components/providers/LanguageProvider'
 import { motion, AnimatePresence } from 'framer-motion'
 
-export default function Navbar() {
+interface NavbarProps {
+  logoUrl?: string | null
+}
+
+export default function Navbar({ logoUrl }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const { theme, toggleTheme } = useTheme()
@@ -73,11 +78,15 @@ export default function Navbar() {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3 group">
           <div className="w-10 h-10 relative">
-            <svg viewBox="0 0 40 40" fill="none" className="w-full h-full">
-              <rect x="2" y="2" width="36" height="36" stroke="currentColor" strokeWidth="1" className="text-accent-gold" />
-              <rect x="8" y="8" width="24" height="24" stroke="currentColor" strokeWidth="1" className="text-accent-gold/60" />
-              <rect x="14" y="14" width="12" height="12" fill="currentColor" className="text-accent-gold" />
-            </svg>
+            {logoUrl ? (
+              <Image src={logoUrl} alt="EMC Logo" width={40} height={40} className="w-full h-full object-contain" />
+            ) : (
+              <svg viewBox="0 0 40 40" fill="none" className="w-full h-full">
+                <rect x="2" y="2" width="36" height="36" stroke="currentColor" strokeWidth="1" className="text-accent-gold" />
+                <rect x="8" y="8" width="24" height="24" stroke="currentColor" strokeWidth="1" className="text-accent-gold/60" />
+                <rect x="14" y="14" width="12" height="12" fill="currentColor" className="text-accent-gold" />
+              </svg>
+            )}
           </div>
           <div className="flex flex-col">
             <span className="font-heading text-xl font-semibold tracking-wider text-accent-gold">EMC</span>

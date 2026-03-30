@@ -1,0 +1,56 @@
+{
+  "kind": "singleType",
+  "collectionName": "site_settings",
+  "info": {
+    "singularName": "site-setting",
+    "pluralName": "site-settings",
+    "displayName": "Site Settings",
+    "description": "Global site settings: logo, favicon, SEO, OG metadata"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "siteName": {
+      "type": "string",
+      "default": "EMC - Engineering Marble Contractors"
+    },
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "favicon": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "seoTitle": {
+      "type": "string",
+      "default": "EMC - Engineering Marble Contractors | Premium Egyptian Stone"
+    },
+    "seoDescription": {
+      "type": "text",
+      "default": "Premium Egyptian natural stone - Marble, Granite, and specialty stones. 25+ years of excellence in stone craftsmanship."
+    },
+    "seoKeywords": {
+      "type": "text",
+      "default": "Egyptian marble, granite, natural stone, stone export, marble contractors"
+    },
+    "ogImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "canonicalUrl": {
+      "type": "string",
+      "default": "https://emcmarble.com"
+    },
+    "twitterHandle": {
+      "type": "string"
+    }
+  }
+}

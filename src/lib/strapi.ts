@@ -14,6 +14,18 @@ function getStrapiToken() {
 }
 
 // Types
+export interface SiteSettings {
+  siteName: string
+  logoUrl: string | null
+  faviconUrl: string | null
+  seoTitle: string
+  seoDescription: string
+  seoKeywords: string
+  ogImageUrl: string | null
+  canonicalUrl: string
+  twitterHandle: string | null
+}
+
 export interface Product {
   id: number
   name: string
@@ -125,6 +137,18 @@ const fallbackContact: ContactInfo = {
   },
 }
 
+const fallbackSiteSettings: SiteSettings = {
+  siteName: 'EMC - Engineering Marble Contractors',
+  logoUrl: null,
+  faviconUrl: null,
+  seoTitle: 'EMC - Engineering Marble Contractors | Premium Egyptian Stone',
+  seoDescription: 'Premium Egyptian natural stone - Marble, Granite, and specialty stones. 25+ years of excellence in stone craftsmanship.',
+  seoKeywords: 'Egyptian marble, granite, natural stone, stone export, marble contractors',
+  ogImageUrl: null,
+  canonicalUrl: 'https://emcmarble.com',
+  twitterHandle: null,
+}
+
 // Helper to construct image URL
 // Use public URL for media so browsers can load images
 function getStrapiMediaUrl(url: string | null | undefined): string {
@@ -134,19 +158,24 @@ function getStrapiMediaUrl(url: string | null | undefined): string {
 }
 
 // Generic fetch function with error handling
-async function fetchAPI<T>(endpoint: string, fallback: T): Promise<T> {
+async function fetchAPI<T>(endpoint: string, fallback: T, options?: { revalidate?: number }): Promise<T> {
   try {
     const apiUrl = getStrapiApiUrl()
     const token = getStrapiToken()
     const url = `${apiUrl}/api${endpoint}`
     console.log(`[Strapi] Fetching: ${url}`)
-    const res = await fetch(url, {
+    const fetchOptions: RequestInit & { next?: { revalidate: number } } = {
       headers: {
         'Content-Type': 'application/json',
         ...(token && { Authorization: `Bearer ${token}` }),
       },
-      cache: 'no-store', // Always fetch fresh data
-    })
+    }
+    if (options?.revalidate) {
+      fetchOptions.next = { revalidate: options.revalidate }
+    } else {
+      fetchOptions.cache = 'no-store'
+    }
+    const res = await fetch(url, fetchOptions)
 
     if (!res.ok) {
       console.error(`[Strapi] API returned ${res.status} for ${endpoint}`)
@@ -256,6 +285,29 @@ export async function getContactInfo(): Promise<ContactInfo> {
   }
 }
 
+// Get site settings (logo, SEO, OG metadata)
+export async function getSiteSettings(): Promise<SiteSettings> {
+  const data = await fetchAPI<any>('/site-setting?populate=*', null, { revalidate: 300 })
+
+  if (!data) {
+    return fallbackSiteSettings
+  }
+
+  const attrs = data.attributes || data
+
+  return {
+    siteName: attrs.siteName || fallbackSiteSettings.siteName,
+    logoUrl: getStrapiMediaUrl(attrs.logo?.data?.attributes?.url || attrs.logo?.url) || null,
+    faviconUrl: getStrapiMediaUrl(attrs.favicon?.data?.attributes?.url || attrs.favicon?.url) || null,
+    seoTitle: attrs.seoTitle || fallbackSiteSettings.seoTitle,
+    seoDescription: attrs.seoDescription || fallbackSiteSettings.seoDescription,
+    seoKeywords: attrs.seoKeywords || fallbackSiteSettings.seoKeywords,
+    ogImageUrl: getStrapiMediaUrl(attrs.ogImage?.data?.attributes?.url || attrs.ogImage?.url) || null,
+    canonicalUrl: attrs.canonicalUrl || fallbackSiteSettings.canonicalUrl,
+    twitterHandle: attrs.twitterHandle || null,
+  }
+}
+
 // Get stone textures for 3D visualizer
 export async function getStoneTextures() {
   const products = await getProducts()
@@ -270,4 +322,4 @@ export async function getStoneTextures() {
 }
 
 // Export fallback data for use in components that need static data
-export { fallbackProducts, fallbackServices, fallbackAbout, fallbackContact }
+export { fallbackProducts, fallbackServices, fallbackAbout, fallbackContact, fallbackSiteSettings }

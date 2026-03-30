@@ -1,0 +1,2016 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMC | Engineering Marble Contractors - Premium Egyptian Stone</title>
+    <meta name="description" content="EMC - Leading Egyptian marble and granite supplier since 2015. Premium natural stone for luxury projects worldwide.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&family=Tajawal:wght@300;400;500;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Light Theme */
+            --light-primary: #faf8f5;
+            --light-secondary: #f0ebe3;
+            --light-text: #1a1a2e;
+            --light-text-muted: #5a5a6e;
+            --light-card-bg: rgba(255, 255, 255, 0.8);
+            --light-card-border: rgba(26, 26, 46, 0.1);
+            --light-nav-bg: rgba(250, 248, 245, 0.95);
+
+            /* Dark Theme */
+            --dark-primary: #1a1a2e;
+            --dark-secondary: #16213e;
+            --dark-text: #f5f0e8;
+            --dark-text-muted: rgba(245, 240, 232, 0.7);
+            --dark-card-bg: rgba(255, 255, 255, 0.05);
+            --dark-card-border: rgba(255, 255, 255, 0.1);
+            --dark-nav-bg: rgba(26, 26, 46, 0.95);
+
+            /* Shared Colors */
+            --accent-gold: #c9a962;
+            --accent-gold-light: #d4af37;
+            --accent-gold-dark: #a08040;
+            --cream: #f5f0e8;
+            --rose-accent: #d4a5a5;
+            --deep-brown: #5c4033;
+            --granite-black: #0f0f0f;
+        }
+
+        /* Theme Variables */
+        [data-theme="dark"] {
+            --bg-primary: var(--dark-primary);
+            --bg-secondary: var(--dark-secondary);
+            --text-primary: var(--dark-text);
+            --text-muted: var(--dark-text-muted);
+            --card-bg: var(--dark-card-bg);
+            --card-border: var(--dark-card-border);
+            --nav-bg: var(--dark-nav-bg);
+            --hero-overlay: rgba(26, 26, 46, 0.95);
+            --footer-bg: var(--granite-black);
+        }
+
+        [data-theme="light"] {
+            --bg-primary: var(--light-primary);
+            --bg-secondary: var(--light-secondary);
+            --text-primary: var(--light-text);
+            --text-muted: var(--light-text-muted);
+            --card-bg: var(--light-card-bg);
+            --card-border: var(--light-card-border);
+            --nav-bg: var(--light-nav-bg);
+            --hero-overlay: rgba(26, 26, 46, 0.85);
+            --footer-bg: #1a1a2e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            line-height: 1.6;
+            transition: background 0.4s ease, color 0.4s ease;
+        }
+
+        /* RTL Support */
+        [dir="rtl"] body {
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        [dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3, [dir="rtl"] h4, [dir="rtl"] h5, [dir="rtl"] h6 {
+            font-family: 'Amiri', serif;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            letter-spacing: 0.02em;
+        }
+
+        [dir="rtl"] .nav-links {
+            flex-direction: row-reverse;
+        }
+
+        [dir="rtl"] .hero-cta {
+            flex-direction: row-reverse;
+        }
+
+        [dir="rtl"] .about-grid {
+            direction: rtl;
+        }
+
+        [dir="rtl"] .contact-details li {
+            flex-direction: row-reverse;
+        }
+
+        [dir="rtl"] .logo {
+            flex-direction: row-reverse;
+        }
+
+        [dir="rtl"] .footer-content {
+            direction: rtl;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-primary);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent-gold);
+            border-radius: 4px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.4s ease;
+            background: transparent;
+        }
+
+        nav.scrolled {
+            background: var(--nav-bg);
+            backdrop-filter: blur(20px);
+            padding: 1rem 5%;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+        }
+
+        .logo-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .logo-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            letter-spacing: 0.1em;
+        }
+
+        [dir="rtl"] .logo-text {
+            font-family: 'Amiri', serif;
+        }
+
+        .logo-tagline {
+            font-size: 0.65rem;
+            color: var(--accent-gold);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+
+        .nav-center {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 400;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--accent-gold);
+            transition: width 0.3s ease;
+        }
+
+        [dir="rtl"] .nav-links a::after {
+            left: auto;
+            right: 0;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-gold);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            width: 44px;
+            height: 24px;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle::before {
+            content: '';
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            background: var(--accent-gold);
+            border-radius: 50%;
+            top: 2px;
+            left: 2px;
+            transition: transform 0.3s ease;
+        }
+
+        [data-theme="light"] .theme-toggle::before {
+            transform: translateX(20px);
+        }
+
+        .theme-toggle .sun-icon,
+        .theme-toggle .moon-icon {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .theme-toggle .sun-icon {
+            right: 5px;
+            opacity: 0.5;
+        }
+
+        .theme-toggle .moon-icon {
+            left: 5px;
+            opacity: 0.5;
+        }
+
+        [data-theme="dark"] .theme-toggle .moon-icon {
+            opacity: 1;
+        }
+
+        [data-theme="light"] .theme-toggle .sun-icon {
+            opacity: 1;
+        }
+
+        /* Language Toggle */
+        .lang-toggle {
+            display: flex;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .lang-btn {
+            padding: 0.5rem 0.75rem;
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        .lang-btn.active {
+            background: var(--accent-gold);
+            color: var(--dark-primary);
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 2px;
+            background: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding: 0 5%;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, var(--hero-overlay) 0%, rgba(22, 33, 62, 0.9) 100%);
+            z-index: 0;
+        }
+
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600"><defs><linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%23f5f0e8;stop-opacity:0.1"/><stop offset="100%" style="stop-color:%23c9a962;stop-opacity:0.05"/></linearGradient></defs><path d="M0,300 Q200,250 400,300 T800,300 L800,600 L0,600 Z" fill="url(%23grad)"/></svg>');
+            background-size: cover;
+            opacity: 0.5;
+        }
+
+        .marble-texture {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0.03;
+            background-image:
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 10px,
+                    rgba(201, 169, 98, 0.1) 10px,
+                    rgba(201, 169, 98, 0.1) 20px
+                );
+            animation: textureMove 20s linear infinite;
+        }
+
+        @keyframes textureMove {
+            0% { transform: translateX(0) translateY(0); }
+            100% { transform: translateX(40px) translateY(40px); }
+        }
+
+        .floating-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .shape {
+            position: absolute;
+            border: 1px solid rgba(201, 169, 98, 0.2);
+            animation: float 15s ease-in-out infinite;
+        }
+
+        .shape-1 {
+            width: 300px;
+            height: 300px;
+            top: 10%;
+            right: 10%;
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            animation-delay: 0s;
+        }
+
+        .shape-2 {
+            width: 200px;
+            height: 200px;
+            bottom: 20%;
+            left: 5%;
+            border-radius: 70% 30% 30% 70% / 60% 40% 60% 40%;
+            animation-delay: -5s;
+        }
+
+        .shape-3 {
+            width: 150px;
+            height: 150px;
+            top: 50%;
+            right: 25%;
+            border-radius: 50%;
+            animation-delay: -10s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(10deg); }
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+            max-width: 900px;
+        }
+
+        .hero-subtitle {
+            font-size: 0.9rem;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: var(--accent-gold);
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards;
+            animation-delay: 0.3s;
+        }
+
+        [dir="rtl"] .hero-subtitle {
+            letter-spacing: 0.1em;
+        }
+
+        .hero-title {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 300;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--cream);
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards;
+            animation-delay: 0.5s;
+        }
+
+        .hero-title span {
+            color: var(--accent-gold);
+            font-style: italic;
+        }
+
+        [dir="rtl"] .hero-title span {
+            font-style: normal;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: rgba(245, 240, 232, 0.7);
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            font-weight: 300;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards;
+            animation-delay: 0.7s;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards;
+            animation-delay: 0.9s;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            font-family: inherit;
+        }
+
+        [dir="rtl"] .btn {
+            letter-spacing: 0.05em;
+        }
+
+        .btn-primary {
+            background: var(--accent-gold);
+            color: var(--dark-primary);
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-gold-light);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(201, 169, 98, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--cream);
+            border: 1px solid rgba(245, 240, 232, 0.3);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent-gold);
+            color: var(--accent-gold);
+            transform: translateY(-2px);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards;
+            animation-delay: 1.2s;
+        }
+
+        .scroll-indicator span {
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: rgba(245, 240, 232, 0.5);
+        }
+
+        .scroll-line {
+            width: 1px;
+            height: 60px;
+            background: linear-gradient(to bottom, var(--accent-gold), transparent);
+            animation: scrollPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes scrollPulse {
+            0%, 100% { opacity: 1; transform: scaleY(1); }
+            50% { opacity: 0.5; transform: scaleY(0.8); }
+        }
+
+        /* About Section */
+        .about {
+            padding: 10rem 5%;
+            position: relative;
+            background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-label {
+            font-size: 0.8rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        [dir="rtl"] .section-label {
+            letter-spacing: 0.1em;
+        }
+
+        .section-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-line {
+            width: 80px;
+            height: 1px;
+            background: var(--accent-gold);
+            margin: 0 auto;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            align-items: center;
+        }
+
+        .about-content h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .about-content p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            border-color: var(--accent-gold);
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            color: var(--accent-gold);
+            display: block;
+        }
+
+        [dir="rtl"] .stat-number {
+            font-family: 'Amiri', serif;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        .about-visual {
+            position: relative;
+            height: 500px;
+        }
+
+        .about-image {
+            position: absolute;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .about-image-1 {
+            width: 60%;
+            height: 70%;
+            top: 0;
+            left: 0;
+            background: linear-gradient(135deg, #c9a962 0%, #a08040 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        [dir="rtl"] .about-image-1 {
+            left: auto;
+            right: 0;
+        }
+
+        .about-image-2 {
+            width: 55%;
+            height: 50%;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(135deg, #5c4033 0%, #3d2a22 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid var(--accent-gold);
+        }
+
+        [dir="rtl"] .about-image-2 {
+            right: auto;
+            left: 0;
+        }
+
+        .image-placeholder {
+            color: rgba(255,255,255,0.3);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+        }
+
+        /* Products Section */
+        .products {
+            padding: 10rem 5%;
+            background: var(--footer-bg);
+            position: relative;
+        }
+
+        .products-wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .products .section-title,
+        .products .section-label {
+            color: var(--cream);
+        }
+
+        .product-categories {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 4rem;
+            flex-wrap: wrap;
+        }
+
+        .category-btn {
+            padding: 1rem 2rem;
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--cream);
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        .category-btn:hover,
+        .category-btn.active {
+            background: var(--accent-gold);
+            border-color: var(--accent-gold);
+            color: var(--dark-primary);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-gold);
+            box-shadow: 0 20px 40px rgba(201, 169, 98, 0.15);
+        }
+
+        .product-image {
+            height: 200px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.8) 100%);
+            z-index: 1;
+        }
+
+        /* Product images - using real stone images from Unsplash */
+        .product-image {
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        /* Marble images */
+        .img-galala { background-image: url('https://images.unsplash.com/photo-1635251595997-eb6c8e892ac0?auto=format&fit=crop&w=600&q=80'); }
+        .img-sunny { background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=600&q=80'); }
+        .img-sinai { background-image: url('https://images.unsplash.com/photo-1616627451515-cbc80e5ece35?auto=format&fit=crop&w=600&q=80'); }
+        .img-grey { background-image: url('https://images.unsplash.com/photo-1586075010923-2dd4570fb338?auto=format&fit=crop&w=600&q=80'); }
+        .img-imprador { background-image: url('https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=600&q=80'); }
+        .img-breccia { background-image: url('https://images.unsplash.com/photo-1557672172-298e090bd0f1?auto=format&fit=crop&w=600&q=80'); }
+
+        /* Granite images */
+        .img-black { background-image: url('https://images.unsplash.com/photo-1604068549290-dea0e4a305ca?auto=format&fit=crop&w=600&q=80'); }
+        .img-halayb { background-image: url('https://images.unsplash.com/photo-1585128719715-a942e959847a?auto=format&fit=crop&w=600&q=80'); }
+        .img-rosa { background-image: url('https://images.unsplash.com/photo-1558618047-f4b511986f0b?auto=format&fit=crop&w=600&q=80'); }
+        .img-red { background-image: url('https://images.unsplash.com/photo-1560421683-6856ea585c78?auto=format&fit=crop&w=600&q=80'); }
+        .img-verdi { background-image: url('https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?auto=format&fit=crop&w=600&q=80'); }
+        .img-gold-sinai { background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=600&q=80'); }
+
+        /* Other stones */
+        .img-sandstone { background-image: url('https://images.unsplash.com/photo-1544820223-c6df76dd0e29?auto=format&fit=crop&w=600&q=80'); }
+        .img-basalt { background-image: url('https://images.unsplash.com/photo-1518655048521-f130df041f66?auto=format&fit=crop&w=600&q=80'); }
+        .img-mica { background-image: url('https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=600&q=80'); }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: var(--cream);
+        }
+
+        [dir="rtl"] .product-name {
+            font-family: 'Amiri', serif;
+        }
+
+        .product-type {
+            font-size: 0.75rem;
+            color: var(--accent-gold);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 10rem 5%;
+            background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            padding: 3rem 2rem;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+
+        .service-card:hover {
+            border-color: var(--accent-gold);
+            transform: translateY(-5px);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .service-icon svg {
+            width: 100%;
+            height: 100%;
+            stroke: var(--accent-gold);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            font-weight: 300;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 10rem 5%;
+            background: var(--bg-primary);
+            position: relative;
+        }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-info h3 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info p {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .contact-details {
+            list-style: none;
+        }
+
+        .contact-details li {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-muted);
+        }
+
+        .contact-details svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--accent-gold);
+            flex-shrink: 0;
+        }
+
+        .contact-form {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 3rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--card-border);
+            border-radius: 6px;
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: border-color 0.3s ease;
+        }
+
+        [data-theme="light"] .form-group input,
+        [data-theme="light"] .form-group textarea,
+        [data-theme="light"] .form-group select {
+            background: rgba(0, 0, 0, 0.03);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-group select option {
+            background: var(--bg-primary);
+        }
+
+        /* Footer */
+        footer {
+            padding: 4rem 5% 2rem;
+            background: var(--footer-bg);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto 3rem;
+        }
+
+        .footer-brand p {
+            color: rgba(245, 240, 232, 0.6);
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            font-weight: 300;
+        }
+
+        .footer-links h4 {
+            font-size: 1rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            color: var(--accent-gold);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: rgba(245, 240, 232, 0.6);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-gold);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(245, 240, 232, 0.4);
+            font-size: 0.85rem;
+        }
+
+        footer .logo-text,
+        footer .logo-tagline {
+            color: var(--cream);
+        }
+
+        /* Reveal Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .about-grid,
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .about-visual {
+                height: 400px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .nav-links {
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-center {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                height: 100vh;
+                background: var(--bg-primary);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 2rem;
+                transition: right 0.4s ease;
+                padding: 2rem;
+            }
+
+            .nav-center.open {
+                right: 0;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            [dir="rtl"] .nav-links {
+                flex-direction: column;
+            }
+
+            .nav-controls {
+                flex-direction: column;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            [dir="rtl"] .footer-content {
+                text-align: center;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            [dir="rtl"] .hero-cta {
+                flex-direction: column;
+            }
+
+            .contact-details li {
+                justify-content: center;
+            }
+
+            [dir="rtl"] .contact-details li {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="logo">
+            <div class="logo-icon">
+                <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10 50L30 10L50 50" stroke="#c9a962" stroke-width="2" fill="none"/>
+                    <path d="M17 50L30 25L43 50" stroke="#c9a962" stroke-width="2" fill="none"/>
+                    <line x1="10" y1="50" x2="50" y2="50" stroke="#c9a962" stroke-width="2"/>
+                    <text x="10" y="58" fill="currentColor" font-size="8" font-family="serif">E</text>
+                    <text x="27" y="58" fill="currentColor" font-size="8" font-family="serif">M</text>
+                    <text x="46" y="58" fill="currentColor" font-size="8" font-family="serif">C</text>
+                </svg>
+            </div>
+            <div>
+                <div class="logo-text">EMC</div>
+                <div class="logo-tagline" data-i18n="logo-tagline">Engineering Marble Contractors</div>
+            </div>
+        </div>
+
+        <div class="nav-center" id="navCenter">
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" data-i18n="nav-home">Home</a></li>
+                <li><a href="#about" data-i18n="nav-about">About</a></li>
+                <li><a href="#products" data-i18n="nav-products">Products</a></li>
+                <li><a href="#services" data-i18n="nav-services">Services</a></li>
+                <li><a href="#contact" data-i18n="nav-contact">Contact</a></li>
+            </ul>
+            <div class="nav-controls">
+                <div class="theme-toggle" id="themeToggle" title="Toggle theme">
+                    <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </div>
+                <div class="lang-toggle">
+                    <button class="lang-btn active" data-lang="en">EN</button>
+                    <button class="lang-btn" data-lang="ar">AR</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-bg"></div>
+        <div class="marble-texture"></div>
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+        <div class="hero-content">
+            <p class="hero-subtitle" data-i18n="hero-subtitle">Premium Egyptian Natural Stone</p>
+            <h1 class="hero-title" data-i18n="hero-title">Timeless <span>Elegance</span><br>Carved in Stone</h1>
+            <p class="hero-description" data-i18n="hero-description">
+                For over two decades, EMC has been transforming spaces with Egypt's finest marble and granite.
+                We bring the timeless beauty of natural stone to luxury projects worldwide.
+            </p>
+            <div class="hero-cta">
+                <a href="#products" class="btn btn-primary" data-i18n="hero-btn-explore">Explore Collection</a>
+                <a href="#contact" class="btn btn-secondary" data-i18n="hero-btn-quote">Get a Quote</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span data-i18n="scroll">Scroll</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="section-header reveal">
+            <span class="section-label" data-i18n="about-label">Our Story</span>
+            <h2 class="section-title" data-i18n="about-title">A Legacy of Excellence</h2>
+            <div class="section-line"></div>
+        </div>
+        <div class="about-grid">
+            <div class="about-content reveal">
+                <h3 data-i18n="about-heading">Crafting Dreams in Stone Since 2000</h3>
+                <p data-i18n="about-p1">
+                    Founded in 2015, EMC builds upon the rich legacy of EMCO, our predecessor company
+                    that has operated successfully since 2000. With over two decades of expertise in the
+                    Egyptian marble and granite industry, we have established ourselves as a leading force
+                    in natural stone excellence.
+                </p>
+                <p data-i18n="about-p2">
+                    We specialize in the import and export of high-quality marble and granite, catering to
+                    both domestic and international clients. Our commitment to excellence extends to marble
+                    construction projects, where we deliver unparalleled craftsmanship and service.
+                </p>
+                <p data-i18n="about-p3">
+                    Our vision is to be the premier provider of exquisite marble and granite solutions,
+                    recognized globally for our commitment to quality, innovation, and sustainability.
+                </p>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-number">25+</span>
+                        <span class="stat-label" data-i18n="stat-years">Years Experience</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">50+</span>
+                        <span class="stat-label" data-i18n="stat-varieties">Stone Varieties</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">30+</span>
+                        <span class="stat-label" data-i18n="stat-countries">Countries Served</span>
+                    </div>
+                </div>
+            </div>
+            <div class="about-visual reveal">
+                <div class="about-image about-image-1">
+                    <span class="image-placeholder" data-i18n="img-quarry">Galala Marble Quarry</span>
+                </div>
+                <div class="about-image about-image-2">
+                    <span class="image-placeholder" data-i18n="img-craft">Craftsmanship</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <div class="products-wrapper">
+            <div class="section-header reveal">
+                <span class="section-label" data-i18n="products-label">Our Collection</span>
+                <h2 class="section-title" data-i18n="products-title">Premium Egyptian Stone</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="product-categories reveal">
+                <button class="category-btn active" data-category="all" data-i18n="cat-all">All</button>
+                <button class="category-btn" data-category="marble" data-i18n="cat-marble">Marble</button>
+                <button class="category-btn" data-category="granite" data-i18n="cat-granite">Granite</button>
+                <button class="category-btn" data-category="other" data-i18n="cat-other">Other Stones</button>
+            </div>
+            <div class="products-grid reveal">
+                <!-- Marble Products -->
+                <div class="product-card" data-category="marble">
+                    <div class="product-image img-galala"></div>
+                    <div class="product-info">
+                        <h3 class="product-name" data-i18n="prod-galala">Galala Classic</h3>
+                        <span class="product-type" data-i18n="type-marble">Egyptian Marble</span>
+                    </div>
+                </div>
+                <div class="product-card" data-category="marble">
+                    <div class="product-image img-sunny"></div>
+                    <div class="product-info">
+                        <h3 class="product-name" data-i18n="prod-sunny">Sunny Marble</h3>
+                        <span class="product-type" data-i18n="type-marble">Egyptian Marble</span>
+                    </div>
+                </div>
+                <div class="product-card" data-category="marble">
+                    <div class="product-image img-sinai"></div>
+                    <div class="product-info">
+                        <h3 class="product-name" data-i18n="prod-sinai">Sinai Pearl</h3>
+                        <span class="product-type" data-i18n="type-marble">Egyptian Marble</span>
+                    </div>
+                </div>
+                <div class="product-card" data-category="marble">
+                    <div class="product-image img-grey"></div>
+                    <div class="product-info">
+                        <h3 class="product-name" data-i18n="prod-milly">Milly Grey</h3>
+                        <span class="product-type" data-i18n="type-marble">Egyptian Marble</span>
+                    </div>
+                </div>
+                <div class="product-card" data-category="marble">
+                    <div class="product-image img-imprador"></div>
+                    <div class="product-info">
+                        <h3 class="product-name" data-i18n="prod-imprador">Imprador</h3>
+                        <span class="product-type" data-i18n="type-marble">Egyptian Marble</span>
+                    </div>
+                </div>
+                <div class="product-card" data-category="marble">
+                    <div class="product-image img-breccia"></div>
+                    <div class="product-info">
+                        <h3 class="product-name" data-i18n="prod-breccia">Breccia</h3>
+                        <span class="product-type" data-i18n="type-marble">Egyptian Marble</span>
+                    </div>
+                </div>
+                <!-- Granite Products -->
+                <div class="product-card" data-category="granite">
+                    <div class="product-image img-black"></div>
+                    <div class="product-info">
+                        <h3 class="product-name" data-i18n="prod-blackstar">Black Star</h3>
+                        <span class="product-type" data-i18n="type-granite">Egyptian Granite</span>
+                    </div>
+                </div>
+                <div class="product-card" data-category="granite">
+                    <div class="product-image img-halayb"></div>
+                    <div class="product-info">
+                        <h3 class="product-name" data-i18n="prod-halayb">New Halayb</h3>
+                        <span class="product-type" data-i18n="type-granite">Egyptian Granite</span>
+                    </div>
+                </div>
+                <div class="product-card" data-category="granite">
+                    <div class="product-image img-rosa"></div>
+                    <div class="product-info">
+                        <h3 class="product-name" data-i18n="prod-rosa">Rosa Nasr</h3>
+                        <span class="product-type" data-i18n="type-granite">Egyptian Granite</span>
+                    </div>
+                </div>
+                <div class="product-card" data-category="granite">
+                    <div class="product-image img-red"></div>
+                    <div class="product-info">
+                        <h3 class="product-name" data-i18n="prod-redroyal">Red Royal</h3>
+                        <span class="product-type" data-i18n="type-granite">Egyptian Granite</span>
+                    </div>
+                </div>
+                <div class="product-card" data-category="granite">
+                    <div class="product-image img-verdi"></div>
+                    <div class="product-info">
+                        <h3 class="product-name" data-i18n="prod-verdi">Verdi Green</h3>
+                        <span class="product-type" data-i18n="type-granite">Egyptian Granite</span>
+                    </div>
+                </div>
+                <div class="product-card" data-category="granite">
+                    <div class="product-image img-gold-sinai"></div>
+                    <div class="product-info">
+                        <h3 class="product-name" data-i18n="prod-goldsinai">Golden Sinai</h3>
+                        <span class="product-type" data-i18n="type-granite">Egyptian Granite</span>
+                    </div>
+                </div>
+                <!-- Other Stones -->
+                <div class="product-card" data-category="other">
+                    <div class="product-image img-sandstone"></div>
+                    <div class="product-info">
+                        <h3 class="product-name" data-i18n="prod-hashma">Hashma Sandstone</h3>
+                        <span class="product-type" data-i18n="type-sandstone">Natural Sandstone</span>
+                    </div>
+                </div>
+                <div class="product-card" data-category="other">
+                    <div class="product-image img-basalt"></div>
+                    <div class="product-info">
+                        <h3 class="product-name" data-i18n="prod-basalt">Egyptian Basalt</h3>
+                        <span class="product-type" data-i18n="type-igneous">Igneous Rock</span>
+                    </div>
+                </div>
+                <div class="product-card" data-category="other">
+                    <div class="product-image img-mica"></div>
+                    <div class="product-info">
+                        <h3 class="product-name" data-i18n="prod-mica">Mica Stone</h3>
+                        <span class="product-type" data-i18n="type-sedimentary">Sedimentary Rock</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="section-header reveal">
+            <span class="section-label" data-i18n="services-label">What We Offer</span>
+            <h2 class="section-title" data-i18n="services-title">Our Services</h2>
+            <div class="section-line"></div>
+        </div>
+        <div class="services-grid reveal">
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                        <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                        <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                    </svg>
+                </div>
+                <h3 data-i18n="service-1-title">Import & Export</h3>
+                <p data-i18n="service-1-desc">Global distribution of premium Egyptian marble and granite. We handle logistics and delivery to any destination worldwide.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="3" y1="9" x2="21" y2="9"></line>
+                        <line x1="9" y1="21" x2="9" y2="9"></line>
+                    </svg>
+                </div>
+                <h3 data-i18n="service-2-title">Custom Fabrication</h3>
+                <p data-i18n="service-2-desc">Precision cutting and finishing for any specification. Polished, honed, brushed, flamed, or sandblasted surfaces.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                    </svg>
+                </div>
+                <h3 data-i18n="service-3-title">Project Consultation</h3>
+                <p data-i18n="service-3-desc">Expert guidance for architects and designers. From material selection to installation support for luxury projects.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                </div>
+                <h3 data-i18n="service-4-title">Timely Delivery</h3>
+                <p data-i18n="service-4-desc">Efficient supply chain management ensuring your materials arrive on schedule, every time.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                        <polyline points="10 9 9 9 8 9"></polyline>
+                    </svg>
+                </div>
+                <h3 data-i18n="service-5-title">Quality Certification</h3>
+                <p data-i18n="service-5-desc">Complete documentation including material specifications, quality certificates, and origin verification.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                    </svg>
+                </div>
+                <h3 data-i18n="service-6-title">Premium Selection</h3>
+                <p data-i18n="service-6-desc">Access to the finest Egyptian quarries. Each slab hand-selected for superior quality and unique character.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="contact-wrapper">
+            <div class="contact-info reveal">
+                <span class="section-label" data-i18n="contact-label">Get in Touch</span>
+                <h3 data-i18n="contact-title">Let's Create Something Beautiful</h3>
+                <p data-i18n="contact-desc">
+                    Whether you're an architect seeking premium materials, a contractor planning a luxury project,
+                    or a homeowner dreaming of timeless elegance, we're here to help bring your vision to life.
+                </p>
+                <ul class="contact-details">
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                        <span data-i18n="contact-location">Cairo, Egypt</span>
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                        </svg>
+                        <span>+20 XXX XXX XXXX</span>
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                        <span>info@emc-egypt.com</span>
+                    </li>
+                </ul>
+            </div>
+            <form class="contact-form reveal">
+                <div class="form-group">
+                    <label for="name" data-i18n="form-name">Full Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email" data-i18n="form-email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="interest" data-i18n="form-interest">I'm Interested In</label>
+                    <select id="interest" name="interest">
+                        <option value="" data-i18n="form-select">Select an option</option>
+                        <option value="marble" data-i18n="form-opt-marble">Egyptian Marble</option>
+                        <option value="granite" data-i18n="form-opt-granite">Egyptian Granite</option>
+                        <option value="sandstone" data-i18n="form-opt-sandstone">Hashma Sandstone</option>
+                        <option value="project" data-i18n="form-opt-project">Project Consultation</option>
+                        <option value="other" data-i18n="form-opt-other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message" data-i18n="form-message">Your Message</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;" data-i18n="form-submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10 50L30 10L50 50" stroke="#c9a962" stroke-width="2" fill="none"/>
+                            <path d="M17 50L30 25L43 50" stroke="#c9a962" stroke-width="2" fill="none"/>
+                            <line x1="10" y1="50" x2="50" y2="50" stroke="#c9a962" stroke-width="2"/>
+                            <text x="10" y="58" fill="#f5f0e8" font-size="8" font-family="serif">E</text>
+                            <text x="27" y="58" fill="#f5f0e8" font-size="8" font-family="serif">M</text>
+                            <text x="46" y="58" fill="#f5f0e8" font-size="8" font-family="serif">C</text>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="logo-text">EMC</div>
+                        <div class="logo-tagline" data-i18n="logo-tagline">Engineering Marble Contractors</div>
+                    </div>
+                </div>
+                <p data-i18n="footer-desc">Transforming spaces with Egypt's finest natural stone since 2000. Quality, innovation, and timeless elegance.</p>
+            </div>
+            <div class="footer-links">
+                <h4 data-i18n="footer-products">Products</h4>
+                <ul>
+                    <li><a href="#products" data-i18n="footer-marble">Egyptian Marble</a></li>
+                    <li><a href="#products" data-i18n="footer-granite">Egyptian Granite</a></li>
+                    <li><a href="#products" data-i18n="footer-sandstone">Hashma Sandstone</a></li>
+                    <li><a href="#products" data-i18n="footer-basalt">Basalt Stone</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4 data-i18n="footer-company">Company</h4>
+                <ul>
+                    <li><a href="#about" data-i18n="footer-about">About Us</a></li>
+                    <li><a href="#services" data-i18n="footer-services">Services</a></li>
+                    <li><a href="#contact" data-i18n="footer-contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4 data-i18n="footer-connect">Connect</h4>
+                <ul>
+                    <li><a href="#">LinkedIn</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Facebook</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p data-i18n="footer-copyright">&copy; 2024 EMC - Engineering Marble Contractors. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Translations
+        const translations = {
+            en: {
+                'logo-tagline': 'Engineering Marble Contractors',
+                'nav-home': 'Home',
+                'nav-about': 'About',
+                'nav-products': 'Products',
+                'nav-services': 'Services',
+                'nav-contact': 'Contact',
+                'hero-subtitle': 'Premium Egyptian Natural Stone',
+                'hero-title': 'Timeless <span>Elegance</span><br>Carved in Stone',
+                'hero-description': 'For over two decades, EMC has been transforming spaces with Egypt\'s finest marble and granite. We bring the timeless beauty of natural stone to luxury projects worldwide.',
+                'hero-btn-explore': 'Explore Collection',
+                'hero-btn-quote': 'Get a Quote',
+                'scroll': 'Scroll',
+                'about-label': 'Our Story',
+                'about-title': 'A Legacy of Excellence',
+                'about-heading': 'Crafting Dreams in Stone Since 2000',
+                'about-p1': 'Founded in 2015, EMC builds upon the rich legacy of EMCO, our predecessor company that has operated successfully since 2000. With over two decades of expertise in the Egyptian marble and granite industry, we have established ourselves as a leading force in natural stone excellence.',
+                'about-p2': 'We specialize in the import and export of high-quality marble and granite, catering to both domestic and international clients. Our commitment to excellence extends to marble construction projects, where we deliver unparalleled craftsmanship and service.',
+                'about-p3': 'Our vision is to be the premier provider of exquisite marble and granite solutions, recognized globally for our commitment to quality, innovation, and sustainability.',
+                'stat-years': 'Years Experience',
+                'stat-varieties': 'Stone Varieties',
+                'stat-countries': 'Countries Served',
+                'img-quarry': 'Galala Marble Quarry',
+                'img-craft': 'Craftsmanship',
+                'products-label': 'Our Collection',
+                'products-title': 'Premium Egyptian Stone',
+                'cat-all': 'All',
+                'cat-marble': 'Marble',
+                'cat-granite': 'Granite',
+                'cat-other': 'Other Stones',
+                'prod-galala': 'Galala Classic',
+                'prod-sunny': 'Sunny Marble',
+                'prod-sinai': 'Sinai Pearl',
+                'prod-milly': 'Milly Grey',
+                'prod-imprador': 'Imprador',
+                'prod-breccia': 'Breccia',
+                'prod-blackstar': 'Black Star',
+                'prod-halayb': 'New Halayb',
+                'prod-rosa': 'Rosa Nasr',
+                'prod-redroyal': 'Red Royal',
+                'prod-verdi': 'Verdi Green',
+                'prod-goldsinai': 'Golden Sinai',
+                'prod-hashma': 'Hashma Sandstone',
+                'prod-basalt': 'Egyptian Basalt',
+                'prod-mica': 'Mica Stone',
+                'type-marble': 'Egyptian Marble',
+                'type-granite': 'Egyptian Granite',
+                'type-sandstone': 'Natural Sandstone',
+                'type-igneous': 'Igneous Rock',
+                'type-sedimentary': 'Sedimentary Rock',
+                'services-label': 'What We Offer',
+                'services-title': 'Our Services',
+                'service-1-title': 'Import & Export',
+                'service-1-desc': 'Global distribution of premium Egyptian marble and granite. We handle logistics and delivery to any destination worldwide.',
+                'service-2-title': 'Custom Fabrication',
+                'service-2-desc': 'Precision cutting and finishing for any specification. Polished, honed, brushed, flamed, or sandblasted surfaces.',
+                'service-3-title': 'Project Consultation',
+                'service-3-desc': 'Expert guidance for architects and designers. From material selection to installation support for luxury projects.',
+                'service-4-title': 'Timely Delivery',
+                'service-4-desc': 'Efficient supply chain management ensuring your materials arrive on schedule, every time.',
+                'service-5-title': 'Quality Certification',
+                'service-5-desc': 'Complete documentation including material specifications, quality certificates, and origin verification.',
+                'service-6-title': 'Premium Selection',
+                'service-6-desc': 'Access to the finest Egyptian quarries. Each slab hand-selected for superior quality and unique character.',
+                'contact-label': 'Get in Touch',
+                'contact-title': 'Let\'s Create Something Beautiful',
+                'contact-desc': 'Whether you\'re an architect seeking premium materials, a contractor planning a luxury project, or a homeowner dreaming of timeless elegance, we\'re here to help bring your vision to life.',
+                'contact-location': 'Cairo, Egypt',
+                'form-name': 'Full Name',
+                'form-email': 'Email Address',
+                'form-interest': 'I\'m Interested In',
+                'form-select': 'Select an option',
+                'form-opt-marble': 'Egyptian Marble',
+                'form-opt-granite': 'Egyptian Granite',
+                'form-opt-sandstone': 'Hashma Sandstone',
+                'form-opt-project': 'Project Consultation',
+                'form-opt-other': 'Other',
+                'form-message': 'Your Message',
+                'form-submit': 'Send Message',
+                'footer-desc': 'Transforming spaces with Egypt\'s finest natural stone since 2000. Quality, innovation, and timeless elegance.',
+                'footer-products': 'Products',
+                'footer-marble': 'Egyptian Marble',
+                'footer-granite': 'Egyptian Granite',
+                'footer-sandstone': 'Hashma Sandstone',
+                'footer-basalt': 'Basalt Stone',
+                'footer-company': 'Company',
+                'footer-about': 'About Us',
+                'footer-services': 'Services',
+                'footer-contact': 'Contact',
+                'footer-connect': 'Connect',
+                'footer-copyright': '© 2024 EMC - Engineering Marble Contractors. All rights reserved.'
+            },
+            ar: {
+                'logo-tagline': 'مقاولو الرخام الهندسي',
+                'nav-home': 'الرئيسية',
+                'nav-about': 'من نحن',
+                'nav-products': 'المنتجات',
+                'nav-services': 'الخدمات',
+                'nav-contact': 'اتصل بنا',
+                'hero-subtitle': 'الأحجار الطبيعية المصرية الفاخرة',
+                'hero-title': '<span>أناقة</span> خالدة<br>منحوتة في الحجر',
+                'hero-description': 'لأكثر من عقدين، تقوم EMC بتحويل المساحات بأرقى أنواع الرخام والجرانيت المصري. نجلب الجمال الخالد للحجر الطبيعي للمشاريع الفاخرة حول العالم.',
+                'hero-btn-explore': 'استكشف المجموعة',
+                'hero-btn-quote': 'احصل على عرض سعر',
+                'scroll': 'انزل',
+                'about-label': 'قصتنا',
+                'about-title': 'إرث من التميز',
+                'about-heading': 'نصنع الأحلام من الحجر منذ عام 2000',
+                'about-p1': 'تأسست EMC في عام 2015، وتبني على الإرث الغني لشركة EMCO السابقة التي عملت بنجاح منذ عام 2000. مع أكثر من عقدين من الخبرة في صناعة الرخام والجرانيت المصري، أثبتنا أنفسنا كقوة رائدة في التميز في الأحجار الطبيعية.',
+                'about-p2': 'نحن متخصصون في استيراد وتصدير الرخام والجرانيت عالي الجودة، لخدمة العملاء المحليين والدوليين. يمتد التزامنا بالتميز إلى مشاريع البناء بالرخام، حيث نقدم حرفية وخدمة لا مثيل لها.',
+                'about-p3': 'رؤيتنا هي أن نكون المزود الأول لحلول الرخام والجرانيت الرائعة، معترف بها عالمياً لالتزامنا بالجودة والابتكار والاستدامة.',
+                'stat-years': 'سنوات الخبرة',
+                'stat-varieties': 'أنواع الأحجار',
+                'stat-countries': 'دولة نخدمها',
+                'img-quarry': 'محجر رخام جلالة',
+                'img-craft': 'الحرفية',
+                'products-label': 'مجموعتنا',
+                'products-title': 'الأحجار المصرية الفاخرة',
+                'cat-all': 'الكل',
+                'cat-marble': 'رخام',
+                'cat-granite': 'جرانيت',
+                'cat-other': 'أحجار أخرى',
+                'prod-galala': 'جلالة كلاسيك',
+                'prod-sunny': 'صني',
+                'prod-sinai': 'لؤلؤة سيناء',
+                'prod-milly': 'ميلي رمادي',
+                'prod-imprador': 'إمبرادور',
+                'prod-breccia': 'بريشيا',
+                'prod-blackstar': 'بلاك ستار',
+                'prod-halayb': 'حلايب الجديد',
+                'prod-rosa': 'روزا نصر',
+                'prod-redroyal': 'الأحمر الملكي',
+                'prod-verdi': 'فيردي أخضر',
+                'prod-goldsinai': 'سيناء الذهبي',
+                'prod-hashma': 'حجر الهاشمة',
+                'prod-basalt': 'البازلت المصري',
+                'prod-mica': 'حجر الميكا',
+                'type-marble': 'رخام مصري',
+                'type-granite': 'جرانيت مصري',
+                'type-sandstone': 'حجر رملي طبيعي',
+                'type-igneous': 'صخور نارية',
+                'type-sedimentary': 'صخور رسوبية',
+                'services-label': 'ما نقدمه',
+                'services-title': 'خدماتنا',
+                'service-1-title': 'الاستيراد والتصدير',
+                'service-1-desc': 'التوزيع العالمي للرخام والجرانيت المصري الفاخر. نتعامل مع الخدمات اللوجستية والتسليم إلى أي وجهة حول العالم.',
+                'service-2-title': 'التصنيع المخصص',
+                'service-2-desc': 'القطع الدقيق والتشطيب لأي مواصفات. أسطح مصقولة، مشحذة، مفرشة، ملتهبة، أو مرملة.',
+                'service-3-title': 'استشارات المشاريع',
+                'service-3-desc': 'إرشادات خبراء للمهندسين المعماريين والمصممين. من اختيار المواد إلى دعم التركيب للمشاريع الفاخرة.',
+                'service-4-title': 'التسليم في الموعد',
+                'service-4-desc': 'إدارة سلسلة التوريد الفعالة لضمان وصول موادك في الموعد المحدد، في كل مرة.',
+                'service-5-title': 'شهادات الجودة',
+                'service-5-desc': 'توثيق كامل يشمل مواصفات المواد وشهادات الجودة والتحقق من المنشأ.',
+                'service-6-title': 'اختيار متميز',
+                'service-6-desc': 'الوصول إلى أفضل المحاجر المصرية. كل لوح يتم اختياره يدوياً للجودة الفائقة والطابع الفريد.',
+                'contact-label': 'تواصل معنا',
+                'contact-title': 'لنصنع شيئاً جميلاً معاً',
+                'contact-desc': 'سواء كنت مهندساً معمارياً يبحث عن مواد فاخرة، أو مقاولاً يخطط لمشروع فاخر، أو صاحب منزل يحلم بأناقة خالدة، نحن هنا للمساعدة في تحقيق رؤيتك.',
+                'contact-location': 'القاهرة، مصر',
+                'form-name': 'الاسم الكامل',
+                'form-email': 'البريد الإلكتروني',
+                'form-interest': 'أنا مهتم بـ',
+                'form-select': 'اختر خياراً',
+                'form-opt-marble': 'الرخام المصري',
+                'form-opt-granite': 'الجرانيت المصري',
+                'form-opt-sandstone': 'حجر الهاشمة',
+                'form-opt-project': 'استشارة مشروع',
+                'form-opt-other': 'أخرى',
+                'form-message': 'رسالتك',
+                'form-submit': 'إرسال الرسالة',
+                'footer-desc': 'نحول المساحات بأفضل الأحجار الطبيعية المصرية منذ عام 2000. الجودة والابتكار والأناقة الخالدة.',
+                'footer-products': 'المنتجات',
+                'footer-marble': 'الرخام المصري',
+                'footer-granite': 'الجرانيت المصري',
+                'footer-sandstone': 'حجر الهاشمة',
+                'footer-basalt': 'حجر البازلت',
+                'footer-company': 'الشركة',
+                'footer-about': 'من نحن',
+                'footer-services': 'الخدمات',
+                'footer-contact': 'اتصل بنا',
+                'footer-connect': 'تواصل معنا',
+                'footer-copyright': '© 2024 EMC - مقاولو الرخام الهندسي. جميع الحقوق محفوظة.'
+            }
+        };
+
+        // Current language
+        let currentLang = 'en';
+
+        // Language switcher
+        function setLanguage(lang) {
+            currentLang = lang;
+            const html = document.documentElement;
+
+            // Set direction
+            html.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+            html.setAttribute('lang', lang);
+
+            // Update all translatable elements
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                        el.placeholder = translations[lang][key];
+                    } else {
+                        el.innerHTML = translations[lang][key];
+                    }
+                }
+            });
+
+            // Update language buttons
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
+
+            // Save preference
+            localStorage.setItem('emc-lang', lang);
+        }
+
+        // Language toggle buttons
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
+        });
+
+        // Theme toggle
+        const themeToggle = document.getElementById('themeToggle');
+
+        function setTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('emc-theme', theme);
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            setTheme(currentTheme === 'dark' ? 'light' : 'dark');
+        });
+
+        // Load saved preferences
+        const savedTheme = localStorage.getItem('emc-theme') || 'dark';
+        const savedLang = localStorage.getItem('emc-lang') || 'en';
+        setTheme(savedTheme);
+        setLanguage(savedLang);
+
+        // Navigation scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navCenter = document.getElementById('navCenter');
+
+        menuToggle.addEventListener('click', () => {
+            navCenter.classList.toggle('open');
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navCenter.classList.remove('open');
+            });
+        });
+
+        // Product category filter
+        const categoryBtns = document.querySelectorAll('.category-btn');
+        const productCards = document.querySelectorAll('.product-card');
+
+        categoryBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                categoryBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const category = btn.dataset.category;
+                productCards.forEach(card => {
+                    if (category === 'all' || card.dataset.category === category) {
+                        card.style.display = 'block';
+                        card.style.animation = 'fadeInUp 0.5s ease forwards';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Reveal on scroll animation
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const revealOnScroll = () => {
+            revealElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+
+                if (elementTop < windowHeight - 100) {
+                    element.classList.add('active');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll();
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission
+        const contactForm = document.querySelector('.contact-form');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const message = currentLang === 'ar'
+                ? 'شكراً لرسالتك! سنتواصل معك قريباً.'
+                : 'Thank you for your message! We will get back to you soon.';
+            alert(message);
+            contactForm.reset();
+        });
+
+        // Parallax effect for hero shapes
+        document.addEventListener('mousemove', (e) => {
+            const shapes = document.querySelectorAll('.shape');
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+
+            shapes.forEach((shape, index) => {
+                const speed = (index + 1) * 20;
+                shape.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
+            });
+        });
+    </script>
+</body>
+</html>

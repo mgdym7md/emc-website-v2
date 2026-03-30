@@ -96,6 +96,24 @@ async function seed() {
     console.log('⏭️  Contact already exists, skipping');
   }
 
+  // --- Seed Site Settings (single type) ---
+  const existingSiteSettings = await app.db.query('api::site-setting.site-setting').findOne({});
+  if (!existingSiteSettings) {
+    const ssData = seedData.siteSettings;
+    await app.db.query('api::site-setting.site-setting').create({
+      data: {
+        site_name: ssData.siteName,
+        seo_title: ssData.seoTitle,
+        seo_description: ssData.seoDescription,
+        seo_keywords: ssData.seoKeywords,
+        canonical_url: ssData.canonicalUrl,
+      },
+    });
+    console.log('✅ Seeded site settings');
+  } else {
+    console.log('⏭️  Site settings already exist, skipping');
+  }
+
   // --- Enable Public API Permissions ---
   console.log('\n🔓 Setting up public API permissions...');
 
@@ -109,6 +127,8 @@ async function seed() {
       { uid: 'api::service.service', actions: ['find', 'findOne'] },
       { uid: 'api::about.about', actions: ['find'] },
       { uid: 'api::contact.contact', actions: ['find'] },
+      { uid: 'api::site-setting.site-setting', actions: ['find'] },
+      { uid: 'api::contact-submission.contact-submission', actions: ['create'] },
     ];
 
     for (const ct of contentTypes) {
@@ -131,7 +151,7 @@ async function seed() {
         }
       }
     }
-    console.log('✅ Public API permissions enabled for: products, services, about, contact');
+    console.log('✅ Public API permissions enabled for: products, services, about, contact, site-setting, contact-submission');
   }
 
   console.log('\n🎉 Seed complete!\n');

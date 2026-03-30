@@ -5,6 +5,7 @@ import { ThemeProvider } from '@/components/providers/ThemeProvider'
 import { LanguageProvider } from '@/components/providers/LanguageProvider'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
+import { getSiteSettings } from '@/lib/strapi'
 
 const cormorant = Cormorant_Garamond({
   subsets: ['latin'],
@@ -18,25 +19,55 @@ const montserrat = Montserrat({
   variable: '--font-body',
 })
 
-export const metadata: Metadata = {
-  title: 'EMC - Engineering Marble Contractors | Premium Egyptian Stone',
-  description: 'Premium Egyptian natural stone - Marble, Granite, and specialty stones. 25+ years of excellence in stone craftsmanship.',
-  keywords: ['Egyptian marble', 'granite', 'natural stone', 'stone export', 'marble contractors'],
+export async function generateMetadata(): Promise<Metadata> {
+  const settings = await getSiteSettings()
+
+  return {
+    title: settings.seoTitle,
+    description: settings.seoDescription,
+    keywords: settings.seoKeywords.split(',').map((k) => k.trim()),
+    metadataBase: new URL(settings.canonicalUrl),
+    alternates: {
+      canonical: '/',
+    },
+    openGraph: {
+      title: settings.seoTitle,
+      description: settings.seoDescription,
+      url: settings.canonicalUrl,
+      siteName: settings.siteName,
+      type: 'website',
+      ...(settings.ogImageUrl && {
+        images: [{ url: settings.ogImageUrl, width: 1200, height: 630 }],
+      }),
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: settings.seoTitle,
+      description: settings.seoDescription,
+      ...(settings.twitterHandle && { site: settings.twitterHandle }),
+      ...(settings.ogImageUrl && { images: [settings.ogImageUrl] }),
+    },
+    ...(settings.faviconUrl && {
+      icons: { icon: settings.faviconUrl },
+    }),
+  }
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  const settings = await getSiteSettings()
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${cormorant.variable} ${montserrat.variable} font-body bg-dark-primary text-accent-cream`}>
         <ThemeProvider>
           <LanguageProvider>
-            <Navbar />
+            <Navbar logoUrl={settings.logoUrl} />
             <main>{children}</main>
-            <Footer />
+            <Footer logoUrl={settings.logoUrl} />
           </LanguageProvider>
         </ThemeProvider>
       </body>

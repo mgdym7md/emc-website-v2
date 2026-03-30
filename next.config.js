@@ -13,19 +13,11 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: '*.strapiapp.com',
+        hostname: 'strapi.emcmarble.com',
       },
-      // Production Strapi domain - set STRAPI_HOSTNAME in .env
-      ...(process.env.STRAPI_HOSTNAME ? [{
-        protocol: 'https',
-        hostname: process.env.STRAPI_HOSTNAME,
-      }] : []),
     ],
   },
   output: 'standalone',
-  env: {
-    STRAPI_URL: process.env.STRAPI_URL || 'http://localhost:1337',
-  },
 }
 
 module.exports = nextConfig

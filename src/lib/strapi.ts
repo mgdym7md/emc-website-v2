@@ -1,14 +1,16 @@
 // Strapi CMS API Helper Functions
 
-// Read env vars at runtime (not build time) to support Docker deployments
+// Force runtime env var resolution - webpack cannot inline dynamic lookups
+const env = (key: string) => process.env[key]
+
 function getStrapiApiUrl() {
-  return process.env.STRAPI_URL || process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'
+  return env('STRAPI_URL') || env('NEXT_PUBLIC_STRAPI_URL') || 'http://localhost:1337'
 }
 function getStrapiPublicUrl() {
-  return process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'
+  return env('NEXT_PUBLIC_STRAPI_URL') || 'http://localhost:1337'
 }
 function getStrapiToken() {
-  return process.env.STRAPI_API_TOKEN
+  return env('STRAPI_API_TOKEN')
 }
 
 // Types

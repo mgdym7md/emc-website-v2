@@ -24,47 +24,45 @@ async function seed() {
 
   console.log('🌱 Starting seed...\n');
 
-  // --- Helper: Link localizations for single types ---
-  async function linkSingleTypeLocalizations(collectionName, enId, arId) {
-    const tableName = `${collectionName}_localizations_links`;
-    try {
-      await app.db.connection.raw(
-        `INSERT INTO ${tableName} (${collectionName.slice(0, -1)}_id, inv_${collectionName.slice(0, -1)}_id) VALUES (?, ?), (?, ?)`,
-        [enId, arId, arId, enId]
-      );
-    } catch (err) {
-      // Try alternative column naming pattern
-      try {
-        await app.db.connection.raw(
-          `INSERT INTO ${tableName} (${collectionName}_id, inv_${collectionName}_id) VALUES (?, ?), (?, ?)`,
-          [enId, arId, arId, enId]
-        );
-      } catch (err2) {
-        console.warn(`⚠️  Could not link localizations for ${collectionName}, trying generic pattern...`);
-        // Last resort: inspect the table to find column names
-        const cols = await app.db.connection.raw(`PRAGMA table_info(${tableName})`);
-        if (cols && cols.length >= 2) {
-          const col1 = cols[0].name;
-          const col2 = cols[1].name;
-          await app.db.connection.raw(
-            `INSERT INTO ${tableName} (${col1}, ${col2}) VALUES (?, ?), (?, ?)`,
-            [enId, arId, arId, enId]
-          );
-        }
-      }
-    }
+  // --- Ensure Arabic locale exists ---
+  const existingLocales = await app.db.query('plugin::i18n.locale').findMany({});
+  const hasArabic = existingLocales.some(l => l.code === 'ar');
+  if (!hasArabic) {
+    await app.db.query('plugin::i18n.locale').create({
+      data: { name: 'Arabic (ar)', code: 'ar' },
+    });
+    console.log('✅ Created Arabic (ar) locale');
+  } else {
+    console.log('⏭️  Arabic locale already exists');
   }
 
-  // --- Helper: Link localizations for collection types ---
-  async function linkCollectionLocalizations(collectionName, singularName, enId, arId) {
+  // --- Helper: Discover column names and link localizations ---
+  async function linkLocalizations(collectionName, singularName, enId, arId) {
     const tableName = `${collectionName}_localizations_links`;
+    // Discover actual column names from information_schema (PostgreSQL-compatible)
+    const colResult = await app.db.connection.raw(
+      `SELECT column_name FROM information_schema.columns WHERE table_name = ? ORDER BY ordinal_position`,
+      [tableName]
+    );
+    const cols = colResult.rows.map(r => r.column_name);
+    if (cols.length < 2) {
+      console.warn(`⚠️  Could not find columns for ${tableName} (found: ${cols})`);
+      return;
+    }
+    // Filter out 'id' column if present — we want the two FK columns
+    const fkCols = cols.filter(c => c !== 'id');
+    if (fkCols.length < 2) {
+      console.warn(`⚠️  Not enough FK columns in ${tableName}: ${fkCols}`);
+      return;
+    }
+    const [col1, col2] = fkCols;
     try {
       await app.db.connection.raw(
-        `INSERT INTO ${tableName} (${singularName}_id, inv_${singularName}_id) VALUES (?, ?), (?, ?)`,
+        `INSERT INTO ${tableName} (${col1}, ${col2}) VALUES (?, ?), (?, ?) ON CONFLICT DO NOTHING`,
         [enId, arId, arId, enId]
       );
     } catch (err) {
-      console.warn(`⚠️  Could not link localizations for ${collectionName}: ${err.message}`);
+      console.warn(`⚠️  Could not link localizations for ${tableName}: ${err.message}`);
     }
   }
 
@@ -110,7 +108,7 @@ async function seed() {
           publishedAt: new Date(),
         },
       });
-      await linkCollectionLocalizations('products', 'product', enProductIds[i], arEntry.id);
+      await linkLocalizations('products', 'product', enProductIds[i], arEntry.id);
     }
     console.log(`✅ Seeded ${seedData.productsAr.length} products (Arabic)`);
   } else {
@@ -154,7 +152,7 @@ async function seed() {
           publishedAt: new Date(),
         },
       });
-      await linkCollectionLocalizations('services', 'service', enServiceIds[i], arEntry.id);
+      await linkLocalizations('services', 'service', enServiceIds[i], arEntry.id);
     }
     console.log(`✅ Seeded ${seedData.servicesAr.length} services (Arabic)`);
   } else {
@@ -198,7 +196,7 @@ async function seed() {
         published_at: new Date(),
       },
     });
-    await linkSingleTypeLocalizations('abouts', aboutEnId, arEntry.id);
+    await linkLocalizations('abouts', 'about', aboutEnId, arEntry.id);
     console.log('✅ Seeded about content (Arabic)');
   } else {
     console.log('⏭️  About (Arabic) already exists, skipping');
@@ -247,7 +245,7 @@ async function seed() {
         published_at: new Date(),
       },
     });
-    await linkSingleTypeLocalizations('contacts', contactEnId, arEntry.id);
+    await linkLocalizations('contacts', 'contact', contactEnId, arEntry.id);
     console.log('✅ Seeded contact content (Arabic)');
   } else {
     console.log('⏭️  Contact (Arabic) already exists, skipping');
@@ -281,7 +279,7 @@ async function seed() {
         published_at: new Date(),
       },
     });
-    await linkSingleTypeLocalizations('heroes', heroEnId, arEntry.id);
+    await linkLocalizations('heroes', 'hero', heroEnId, arEntry.id);
     console.log('✅ Seeded hero content (Arabic)');
   } else {
     console.log('⏭️  Hero (Arabic) already exists, skipping');
@@ -314,7 +312,7 @@ async function seed() {
         published_at: new Date(),
       },
     });
-    await linkSingleTypeLocalizations('ui_texts', uiTextEnId, arEntry.id);
+    await linkLocalizations('ui_texts', 'ui_text', uiTextEnId, arEntry.id);
     console.log('✅ Seeded UI text (Arabic)');
   } else {
     console.log('⏭️  UI Text (Arabic) already exists, skipping');

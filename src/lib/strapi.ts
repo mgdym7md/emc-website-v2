@@ -75,23 +75,35 @@ export interface ContactInfo {
   mapUrl?: string
 }
 
+export interface HeroContent {
+  tagline: string
+  title: string
+  subtitle: string
+  description: string
+  ctaExploreText: string
+  ctaQuoteText: string
+  scrollText: string
+  customizerCtaText: string
+  backgroundImageUrl: string | null
+}
+
 // Fallback Data (used when Strapi is unavailable)
 const fallbackProducts: Product[] = [
-  { id: 1, name: 'Galala Classic', type: 'marble', category: 'marble', color: '#e8dcc8', image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=600', description: 'Premium Egyptian marble with warm beige tones', order: 1 },
-  { id: 2, name: 'Sunny Marble', type: 'marble', category: 'marble', color: '#f5e6c8', image: 'https://images.unsplash.com/photo-1615971677499-5467cbab01c0?w=600', description: 'Bright golden-hued marble perfect for elegant spaces', order: 2 },
-  { id: 3, name: 'Sinai Pearl', type: 'marble', category: 'marble', color: '#f0ebe5', image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600', description: 'Lustrous pearl-white marble from the Sinai region', order: 3 },
-  { id: 4, name: 'Milly Grey', type: 'marble', category: 'marble', color: '#9a9a9a', image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600', description: 'Contemporary grey marble with subtle veining', order: 4 },
-  { id: 5, name: 'Imprador', type: 'marble', category: 'marble', color: '#8b6914', image: 'https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=600', description: 'Rich brown marble with dramatic patterns', order: 5 },
-  { id: 6, name: 'Breccia', type: 'marble', category: 'marble', color: '#c4a882', image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600', description: 'Classic breccia with distinctive angular fragments', order: 6 },
-  { id: 7, name: 'Black Star', type: 'granite', category: 'granite', color: '#1a1a1a', image: 'https://images.unsplash.com/photo-1600573472591-ee6981cf81f0?w=600', description: 'Deep black granite with sparkling mineral deposits', order: 7 },
-  { id: 8, name: 'New Halayb', type: 'granite', category: 'granite', color: '#4a4a4a', image: 'https://images.unsplash.com/photo-1600566752734-2a0cd66c42b5?w=600', description: 'Premium Egyptian granite from Halayb region', order: 8 },
-  { id: 9, name: 'Rosa Nasr', type: 'granite', category: 'granite', color: '#d4a5a5', image: 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=600', description: 'Beautiful pink granite with natural patterns', order: 9 },
-  { id: 10, name: 'Red Royal', type: 'granite', category: 'granite', color: '#8b3a3a', image: 'https://images.unsplash.com/photo-1600573472572-8aba3fca8d8a?w=600', description: 'Majestic red granite for statement surfaces', order: 10 },
-  { id: 11, name: 'Verdi Green', type: 'granite', category: 'granite', color: '#3a5a3a', image: 'https://images.unsplash.com/photo-1600607687644-c7171b42498f?w=600', description: 'Elegant green granite with unique coloring', order: 11 },
-  { id: 12, name: 'Golden Sinai', type: 'granite', category: 'granite', color: '#c9a962', image: 'https://images.unsplash.com/photo-1600566753151-384129cf4e3e?w=600', description: 'Warm golden granite from Sinai quarries', order: 12 },
-  { id: 13, name: 'Hashma Sandstone', type: 'other', category: 'sandstone', color: '#d4c4a0', image: 'https://images.unsplash.com/photo-1600585154363-67eb9e2e2099?w=600', description: 'Traditional Egyptian sandstone', order: 13 },
-  { id: 14, name: 'Egyptian Basalt', type: 'other', category: 'basalt', color: '#2a2a2a', image: 'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=600', description: 'Dense volcanic basalt for durable applications', order: 14 },
-  { id: 15, name: 'Mica Stone', type: 'other', category: 'mica', color: '#c0b090', image: 'https://images.unsplash.com/photo-1600566752547-33a1a9eb8e91?w=600', description: 'Shimmering mica stone with natural sparkle', order: 15 },
+  { id: 1, name: 'Galala Classic', type: 'marble', category: 'marble', color: '#e8dcc8', image: '', description: 'Premium Egyptian marble with warm beige tones', order: 1 },
+  { id: 2, name: 'Sunny Marble', type: 'marble', category: 'marble', color: '#f5e6c8', image: '', description: 'Bright golden-hued marble perfect for elegant spaces', order: 2 },
+  { id: 3, name: 'Sinai Pearl', type: 'marble', category: 'marble', color: '#f0ebe5', image: '', description: 'Lustrous pearl-white marble from the Sinai region', order: 3 },
+  { id: 4, name: 'Milly Grey', type: 'marble', category: 'marble', color: '#9a9a9a', image: '', description: 'Contemporary grey marble with subtle veining', order: 4 },
+  { id: 5, name: 'Imprador', type: 'marble', category: 'marble', color: '#8b6914', image: '', description: 'Rich brown marble with dramatic patterns', order: 5 },
+  { id: 6, name: 'Breccia', type: 'marble', category: 'marble', color: '#c4a882', image: '', description: 'Classic breccia with distinctive angular fragments', order: 6 },
+  { id: 7, name: 'Black Star', type: 'granite', category: 'granite', color: '#1a1a1a', image: '', description: 'Deep black granite with sparkling mineral deposits', order: 7 },
+  { id: 8, name: 'New Halayb', type: 'granite', category: 'granite', color: '#4a4a4a', image: '', description: 'Premium Egyptian granite from Halayb region', order: 8 },
+  { id: 9, name: 'Rosa Nasr', type: 'granite', category: 'granite', color: '#d4a5a5', image: '', description: 'Beautiful pink granite with natural patterns', order: 9 },
+  { id: 10, name: 'Red Royal', type: 'granite', category: 'granite', color: '#8b3a3a', image: '', description: 'Majestic red granite for statement surfaces', order: 10 },
+  { id: 11, name: 'Verdi Green', type: 'granite', category: 'granite', color: '#3a5a3a', image: '', description: 'Elegant green granite with unique coloring', order: 11 },
+  { id: 12, name: 'Golden Sinai', type: 'granite', category: 'granite', color: '#c9a962', image: '', description: 'Warm golden granite from Sinai quarries', order: 12 },
+  { id: 13, name: 'Hashma Sandstone', type: 'other', category: 'sandstone', color: '#d4c4a0', image: '', description: 'Traditional Egyptian sandstone', order: 13 },
+  { id: 14, name: 'Egyptian Basalt', type: 'other', category: 'basalt', color: '#2a2a2a', image: '', description: 'Dense volcanic basalt for durable applications', order: 14 },
+  { id: 15, name: 'Mica Stone', type: 'other', category: 'mica', color: '#c0b090', image: '', description: 'Shimmering mica stone with natural sparkle', order: 15 },
 ]
 
 const fallbackServices: Service[] = [
@@ -116,10 +128,7 @@ const fallbackAbout: AboutContent = {
     { value: '50+', label: 'Stone Varieties' },
     { value: '30+', label: 'Countries Served' },
   ],
-  images: [
-    'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800',
-    'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800',
-  ],
+  images: [],
   mission: 'To deliver the finest Egyptian natural stone to the world while maintaining the highest standards of quality and craftsmanship.',
   vision: 'To be the global leader in premium Egyptian stone exports, recognized for excellence and reliability.',
 }
@@ -149,9 +158,21 @@ const fallbackSiteSettings: SiteSettings = {
   twitterHandle: null,
 }
 
+const fallbackHeroContent: HeroContent = {
+  tagline: 'Engineering Marble Contractors',
+  title: 'Timeless Elegance',
+  subtitle: 'Carved in Stone',
+  description: 'Premium Egyptian Natural Stone',
+  ctaExploreText: 'Explore Collection',
+  ctaQuoteText: 'Get a Quote',
+  scrollText: 'Scroll to discover',
+  customizerCtaText: 'Try Our 3D Kitchen Visualizer',
+  backgroundImageUrl: null,
+}
+
 // Helper to construct image URL
 // Use public URL for media so browsers can load images
-function getStrapiMediaUrl(url: string | null | undefined): string {
+export function getStrapiMediaUrl(url: string | null | undefined): string {
   if (!url) return ''
   if (url.startsWith('http')) return url
   return `${getStrapiPublicUrl()}${url}`
@@ -207,8 +228,7 @@ export async function getProducts(): Promise<Product[]> {
     category: item.attributes?.category || item.category,
     description: item.attributes?.description || item.description,
     color: item.attributes?.color || item.color,
-    image: getStrapiMediaUrl(item.attributes?.image?.data?.attributes?.url) ||
-           fallbackProducts.find(p => p.name === (item.attributes?.name || item.name))?.image || '',
+    image: getStrapiMediaUrl(item.attributes?.image?.data?.attributes?.url) || '',
     specifications: item.attributes?.specifications || item.specifications,
     order: item.attributes?.order || item.order || 0,
   }))
@@ -308,6 +328,99 @@ export async function getSiteSettings(): Promise<SiteSettings> {
   }
 }
 
+// Get hero content
+export async function getHeroContent(): Promise<HeroContent> {
+  const data = await fetchAPI<any>('/hero?populate=*', null, { revalidate: 300 })
+
+  if (!data) {
+    return fallbackHeroContent
+  }
+
+  const attrs = data.attributes || data
+
+  return {
+    tagline: attrs.tagline || fallbackHeroContent.tagline,
+    title: attrs.title || fallbackHeroContent.title,
+    subtitle: attrs.subtitle || fallbackHeroContent.subtitle,
+    description: attrs.description || fallbackHeroContent.description,
+    ctaExploreText: attrs.ctaExploreText || fallbackHeroContent.ctaExploreText,
+    ctaQuoteText: attrs.ctaQuoteText || fallbackHeroContent.ctaQuoteText,
+    scrollText: attrs.scrollText || fallbackHeroContent.scrollText,
+    customizerCtaText: attrs.customizerCtaText || fallbackHeroContent.customizerCtaText,
+    backgroundImageUrl: getStrapiMediaUrl(attrs.backgroundImage?.data?.attributes?.url || attrs.backgroundImage?.url) || null,
+  }
+}
+
+// Mapping from Strapi ui-text field names to translation keys
+const uiTextFieldToKey: Record<string, string> = {
+  navHome: 'nav.home',
+  navAbout: 'nav.about',
+  navProducts: 'nav.products',
+  navServices: 'nav.services',
+  navContact: 'nav.contact',
+  navCustomizer: 'nav.customizer',
+  aboutSectionTitle: 'about.title',
+  aboutSectionSubtitle: 'about.subtitle',
+  productsSectionTitle: 'products.title',
+  productsSectionSubtitle: 'products.subtitle',
+  filterAll: 'products.filter.all',
+  filterMarble: 'products.filter.marble',
+  filterGranite: 'products.filter.granite',
+  filterOther: 'products.filter.other',
+  visualizeCta: 'products.visualize',
+  servicesSectionTitle: 'services.title',
+  servicesSectionSubtitle: 'services.subtitle',
+  contactSectionTitle: 'contact.title',
+  contactSectionSubtitle: 'contact.subtitle',
+  formName: 'contact.form.name',
+  formEmail: 'contact.form.email',
+  formInterest: 'contact.form.interest',
+  formMessage: 'contact.form.message',
+  formSubmit: 'contact.form.submit',
+  infoLocation: 'contact.info.location',
+  infoPhone: 'contact.info.phone',
+  infoEmail: 'contact.info.email',
+  footerTagline: 'footer.tagline',
+  footerProducts: 'footer.products',
+  footerCompany: 'footer.company',
+  footerCopyright: 'footer.copyright',
+  customizerTitle: 'customizer.title',
+  customizerSelect: 'customizer.select',
+  customizerMaterials: 'customizer.materials',
+  customizerViews: 'customizer.views',
+  customizerFilter: 'customizer.filter',
+  customizerCountertop: 'customizer.countertop',
+  customizerIsland: 'customizer.island',
+  customizerBacksplash: 'customizer.backsplash',
+  customizerFloor: 'customizer.floor',
+}
+
+function mapStrapiFieldsToTranslationKeys(data: Record<string, any>): Record<string, string> {
+  const result: Record<string, string> = {}
+  for (const [field, key] of Object.entries(uiTextFieldToKey)) {
+    if (data[field]) {
+      result[key] = data[field]
+    }
+  }
+  return result
+}
+
+// Get UI texts for both locales
+export async function getUiTexts(): Promise<{ en: Record<string, string>; ar: Record<string, string> }> {
+  const [enData, arData] = await Promise.all([
+    fetchAPI<any>('/ui-text?locale=en', null, { revalidate: 300 }),
+    fetchAPI<any>('/ui-text?locale=ar', null, { revalidate: 300 }),
+  ])
+
+  const enAttrs = enData?.attributes || enData || {}
+  const arAttrs = arData?.attributes || arData || {}
+
+  return {
+    en: mapStrapiFieldsToTranslationKeys(enAttrs),
+    ar: mapStrapiFieldsToTranslationKeys(arAttrs),
+  }
+}
+
 // Get stone textures for 3D visualizer
 export async function getStoneTextures() {
   const products = await getProducts()
@@ -322,4 +435,4 @@ export async function getStoneTextures() {
 }
 
 // Export fallback data for use in components that need static data
-export { fallbackProducts, fallbackServices, fallbackAbout, fallbackContact, fallbackSiteSettings }
+export { fallbackProducts, fallbackServices, fallbackAbout, fallbackContact, fallbackSiteSettings, fallbackHeroContent }

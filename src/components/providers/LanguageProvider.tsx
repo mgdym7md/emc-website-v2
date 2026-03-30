@@ -1,6 +1,6 @@
 'use client'
 
-import { createContext, useContext, useEffect, useState } from 'react'
+import { createContext, useContext, useEffect, useState, useMemo } from 'react'
 
 type Language = 'en' | 'ar'
 
@@ -11,7 +11,7 @@ interface LanguageContextType {
   dir: 'ltr' | 'rtl'
 }
 
-const translations: Record<Language, Record<string, string>> = {
+const hardcodedTranslations: Record<Language, Record<string, string>> = {
   en: {
     // Navigation
     'nav.home': 'Home',
@@ -138,7 +138,7 @@ const translations: Record<Language, Record<string, string>> = {
   },
 }
 
-const defaultT = (key: string): string => translations['en'][key] || key
+const defaultT = (key: string): string => hardcodedTranslations['en'][key] || key
 
 const defaultContext: LanguageContextType = {
   language: 'en',
@@ -149,9 +149,20 @@ const defaultContext: LanguageContextType = {
 
 const LanguageContext = createContext<LanguageContextType>(defaultContext)
 
-export function LanguageProvider({ children }: { children: React.ReactNode }) {
+interface LanguageProviderProps {
+  children: React.ReactNode
+  translations?: { en: Record<string, string>; ar: Record<string, string> }
+}
+
+export function LanguageProvider({ children, translations }: LanguageProviderProps) {
   const [language, setLanguage] = useState<Language>('en')
   const [mounted, setMounted] = useState(false)
+
+  // Merge Strapi translations over hardcoded fallback (Strapi takes priority)
+  const mergedTranslations = useMemo(() => ({
+    en: { ...hardcodedTranslations.en, ...translations?.en },
+    ar: { ...hardcodedTranslations.ar, ...translations?.ar },
+  }), [translations])
 
   useEffect(() => {
     setMounted(true)
@@ -174,7 +185,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   }
 
   const t = (key: string): string => {
-    return translations[language][key] || key
+    return mergedTranslations[language][key] || key
   }
 
   const dir = language === 'ar' ? 'rtl' : 'ltr'

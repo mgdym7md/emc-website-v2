@@ -5,7 +5,7 @@ import { ThemeProvider } from '@/components/providers/ThemeProvider'
 import { LanguageProvider } from '@/components/providers/LanguageProvider'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
-import { getSiteSettings } from '@/lib/strapi'
+import { getSiteSettings, getUiTexts } from '@/lib/strapi'
 
 const cormorant = Cormorant_Garamond({
   subsets: ['latin'],
@@ -58,13 +58,16 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  const settings = await getSiteSettings()
+  const [settings, translations] = await Promise.all([
+    getSiteSettings(),
+    getUiTexts(),
+  ])
 
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${cormorant.variable} ${montserrat.variable} font-body bg-dark-primary text-accent-cream`}>
         <ThemeProvider>
-          <LanguageProvider>
+          <LanguageProvider translations={translations}>
             <Navbar logoUrl={settings.logoUrl} />
             <main>{children}</main>
             <Footer logoUrl={settings.logoUrl} />

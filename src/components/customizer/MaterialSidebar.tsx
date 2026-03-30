@@ -76,19 +76,27 @@ export default function MaterialSidebar({
                 : 'hover:bg-dark-primary/50 border border-transparent'
             } ${!selectedSurface ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}`}
           >
-            {/* Thumbnail */}
+            {/* Thumbnail or Color Swatch */}
             <div className="relative w-14 h-14 overflow-hidden flex-shrink-0">
-              <Image
-                src={material.thumbnail}
-                alt={material.name}
-                fill
-                className="object-cover"
-              />
-              {/* Color overlay for visual indication */}
-              <div
-                className="absolute inset-0 mix-blend-overlay opacity-30"
-                style={{ backgroundColor: material.color }}
-              />
+              {material.thumbnail ? (
+                <>
+                  <Image
+                    src={material.thumbnail}
+                    alt={material.name}
+                    fill
+                    className="object-cover"
+                  />
+                  <div
+                    className="absolute inset-0 mix-blend-overlay opacity-30"
+                    style={{ backgroundColor: material.color }}
+                  />
+                </>
+              ) : (
+                <div
+                  className="w-full h-full border border-accent-gold/20"
+                  style={{ backgroundColor: material.color }}
+                />
+              )}
             </div>
 
             {/* Info */}

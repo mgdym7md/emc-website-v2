@@ -1,9 +1,118 @@
 {
+  "hero": {
+    "en": {
+      "tagline": "Engineering Marble Contractors",
+      "title": "Timeless Elegance",
+      "subtitle": "Carved in Stone",
+      "description": "Premium Egyptian Natural Stone",
+      "ctaExploreText": "Explore Collection",
+      "ctaQuoteText": "Get a Quote",
+      "scrollText": "Scroll to discover",
+      "customizerCtaText": "Try Our 3D Kitchen Visualizer"
+    },
+    "ar": {
+      "tagline": "مقاولو هندسة الرخام",
+      "title": "أناقة خالدة",
+      "subtitle": "منحوتة في الحجر",
+      "description": "حجر طبيعي مصري فاخر",
+      "ctaExploreText": "استكشف المجموعة",
+      "ctaQuoteText": "احصل على عرض سعر",
+      "scrollText": "مرر للاكتشاف",
+      "customizerCtaText": "جرب مصمم المطبخ ثلاثي الأبعاد"
+    }
+  },
+  "uiTexts": {
+    "en": {
+      "navHome": "Home",
+      "navAbout": "About",
+      "navProducts": "Products",
+      "navServices": "Services",
+      "navContact": "Contact",
+      "navCustomizer": "3D Customizer",
+      "aboutSectionTitle": "Our Story",
+      "aboutSectionSubtitle": "Crafting Excellence Since 2000",
+      "productsSectionTitle": "Our Collection",
+      "productsSectionSubtitle": "Premium Egyptian Stone",
+      "filterAll": "All",
+      "filterMarble": "Marble",
+      "filterGranite": "Granite",
+      "filterOther": "Other Stones",
+      "visualizeCta": "Visualize",
+      "servicesSectionTitle": "Our Services",
+      "servicesSectionSubtitle": "Excellence in Every Detail",
+      "contactSectionTitle": "Get in Touch",
+      "contactSectionSubtitle": "Let's Discuss Your Project",
+      "formName": "Full Name",
+      "formEmail": "Email Address",
+      "formInterest": "Interest",
+      "formMessage": "Message",
+      "formSubmit": "Send Message",
+      "infoLocation": "Location",
+      "infoPhone": "Phone",
+      "infoEmail": "Email",
+      "footerTagline": "Premium Egyptian Natural Stone",
+      "footerProducts": "Products",
+      "footerCompany": "Company",
+      "footerCopyright": "© 2024 EMC. All rights reserved.",
+      "customizerTitle": "3D Kitchen Visualizer",
+      "customizerSelect": "Select a Surface",
+      "customizerMaterials": "Materials",
+      "customizerViews": "Views",
+      "customizerFilter": "Filter",
+      "customizerCountertop": "Countertop",
+      "customizerIsland": "Island",
+      "customizerBacksplash": "Backsplash",
+      "customizerFloor": "Floor"
+    },
+    "ar": {
+      "navHome": "الرئيسية",
+      "navAbout": "عنا",
+      "navProducts": "المنتجات",
+      "navServices": "الخدمات",
+      "navContact": "اتصل بنا",
+      "navCustomizer": "المصمم ثلاثي الأبعاد",
+      "aboutSectionTitle": "قصتنا",
+      "aboutSectionSubtitle": "صناعة التميز منذ عام 2000",
+      "productsSectionTitle": "مجموعتنا",
+      "productsSectionSubtitle": "حجر مصري فاخر",
+      "filterAll": "الكل",
+      "filterMarble": "رخام",
+      "filterGranite": "جرانيت",
+      "filterOther": "أحجار أخرى",
+      "visualizeCta": "عرض ثلاثي الأبعاد",
+      "servicesSectionTitle": "خدماتنا",
+      "servicesSectionSubtitle": "التميز في كل التفاصيل",
+      "contactSectionTitle": "تواصل معنا",
+      "contactSectionSubtitle": "دعنا نناقش مشروعك",
+      "formName": "الاسم الكامل",
+      "formEmail": "البريد الإلكتروني",
+      "formInterest": "الاهتمام",
+      "formMessage": "الرسالة",
+      "formSubmit": "إرسال الرسالة",
+      "infoLocation": "الموقع",
+      "infoPhone": "الهاتف",
+      "infoEmail": "البريد الإلكتروني",
+      "footerTagline": "حجر طبيعي مصري فاخر",
+      "footerProducts": "المنتجات",
+      "footerCompany": "الشركة",
+      "footerCopyright": "© 2024 EMC. جميع الحقوق محفوظة.",
+      "customizerTitle": "مصمم المطبخ ثلاثي الأبعاد",
+      "customizerSelect": "اختر سطحًا",
+      "customizerMaterials": "المواد",
+      "customizerViews": "المناظر",
+      "customizerFilter": "تصفية",
+      "customizerCountertop": "سطح العمل",
+      "customizerIsland": "الجزيرة",
+      "customizerBacksplash": "البلاط الخلفي",
+      "customizerFloor": "الأرضية"
+    }
+  },
   "products": [
     {
       "name": "Galala Classic",
       "type": "marble",
       "category": "marble",
+      "color": "#e8dcc8",
       "description": "Premium Egyptian marble with warm beige tones, perfect for elegant interiors.",
       "specifications": {
         "origin": "Egypt",
@@ -15,6 +124,7 @@
       "name": "Sunny Marble",
       "type": "marble",
       "category": "marble",
+      "color": "#f5e6c8",
       "description": "Bright golden-hued marble perfect for elegant spaces.",
       "specifications": {
         "origin": "Egypt",
@@ -26,6 +136,7 @@
       "name": "Sinai Pearl",
       "type": "marble",
       "category": "marble",
+      "color": "#f0ebe5",
       "description": "Lustrous pearl-white marble from the Sinai region.",
       "specifications": {
         "origin": "Sinai, Egypt",
@@ -37,6 +148,7 @@
       "name": "Milly Grey",
       "type": "marble",
       "category": "marble",
+      "color": "#9a9a9a",
       "description": "Contemporary grey marble with subtle veining.",
       "specifications": {
         "origin": "Egypt",
@@ -48,6 +160,7 @@
       "name": "Imprador",
       "type": "marble",
       "category": "marble",
+      "color": "#8b6914",
       "description": "Rich brown marble with dramatic patterns.",
       "specifications": {
         "origin": "Egypt",
@@ -59,6 +172,7 @@
       "name": "Breccia",
       "type": "marble",
       "category": "marble",
+      "color": "#c4a882",
       "description": "Classic breccia with distinctive angular fragments.",
       "specifications": {
         "origin": "Egypt",
@@ -70,6 +184,7 @@
       "name": "Black Star",
       "type": "granite",
       "category": "granite",
+      "color": "#1a1a1a",
       "description": "Deep black granite with sparkling mineral deposits.",
       "specifications": {
         "origin": "Egypt",
@@ -81,6 +196,7 @@
       "name": "New Halayb",
       "type": "granite",
       "category": "granite",
+      "color": "#4a4a4a",
       "description": "Premium Egyptian granite from Halayb region.",
       "specifications": {
         "origin": "Halayb, Egypt",
@@ -92,6 +208,7 @@
       "name": "Rosa Nasr",
       "type": "granite",
       "category": "granite",
+      "color": "#d4a5a5",
       "description": "Beautiful pink granite with natural patterns.",
       "specifications": {
         "origin": "Egypt",
@@ -103,6 +220,7 @@
       "name": "Red Royal",
       "type": "granite",
       "category": "granite",
+      "color": "#8b3a3a",
       "description": "Majestic red granite for statement surfaces.",
       "specifications": {
         "origin": "Egypt",
@@ -114,6 +232,7 @@
       "name": "Verdi Green",
       "type": "granite",
       "category": "granite",
+      "color": "#3a5a3a",
       "description": "Elegant green granite with unique coloring.",
       "specifications": {
         "origin": "Egypt",
@@ -125,6 +244,7 @@
       "name": "Golden Sinai",
       "type": "granite",
       "category": "granite",
+      "color": "#c9a962",
       "description": "Warm golden granite from Sinai quarries.",
       "specifications": {
         "origin": "Sinai, Egypt",
@@ -136,6 +256,7 @@
       "name": "Hashma Sandstone",
       "type": "other",
       "category": "sandstone",
+      "color": "#d4c4a0",
       "description": "Traditional Egyptian sandstone.",
       "specifications": {
         "origin": "Egypt",
@@ -147,6 +268,7 @@
       "name": "Egyptian Basalt",
       "type": "other",
       "category": "basalt",
+      "color": "#2a2a2a",
       "description": "Dense volcanic basalt for durable applications.",
       "specifications": {
         "origin": "Egypt",
@@ -158,6 +280,7 @@
       "name": "Mica Stone",
       "type": "other",
       "category": "mica",
+      "color": "#c0b090",
       "description": "Shimmering mica stone with natural sparkle.",
       "specifications": {
         "origin": "Egypt",
@@ -165,6 +288,23 @@
         "thickness": "10mm, 20mm"
       }
     }
+  ],
+  "productsAr": [
+    { "name": "جلالة كلاسيك", "description": "رخام مصري فاخر بدرجات البيج الدافئة، مثالي للديكورات الداخلية الأنيقة." },
+    { "name": "صني ماربل", "description": "رخام بلون ذهبي مشرق مثالي للمساحات الأنيقة." },
+    { "name": "لؤلؤة سيناء", "description": "رخام أبيض لؤلؤي لامع من منطقة سيناء." },
+    { "name": "ميلي جراي", "description": "رخام رمادي عصري بعروق دقيقة." },
+    { "name": "إمبرادور", "description": "رخام بني غني بأنماط درامية." },
+    { "name": "بريشيا", "description": "بريشيا كلاسيكي بشظايا زاوية مميزة." },
+    { "name": "بلاك ستار", "description": "جرانيت أسود داكن برواسب معدنية لامعة." },
+    { "name": "نيو حلايب", "description": "جرانيت مصري فاخر من منطقة حلايب." },
+    { "name": "روزا نصر", "description": "جرانيت وردي جميل بأنماط طبيعية." },
+    { "name": "ريد رويال", "description": "جرانيت أحمر فخم للأسطح المميزة." },
+    { "name": "فيردي جرين", "description": "جرانيت أخضر أنيق بلون فريد." },
+    { "name": "جولدن سيناء", "description": "جرانيت ذهبي دافئ من محاجر سيناء." },
+    { "name": "حجر هاشمة الرملي", "description": "حجر رملي مصري تقليدي." },
+    { "name": "بازلت مصري", "description": "بازلت بركاني كثيف للتطبيقات المتينة." },
+    { "name": "حجر الميكا", "description": "حجر ميكا متلألئ ببريق طبيعي." }
   ],
   "services": [
     {
@@ -204,6 +344,14 @@
       "order": 6
     }
   ],
+  "servicesAr": [
+    { "title": "الاستيراد والتصدير", "description": "توزيع عالمي للحجر المصري الفاخر إلى الأسواق حول العالم بخدمات لوجستية موثوقة." },
+    { "title": "التصنيع المخصص", "description": "قص وتشطيب دقيق وفق المواصفات المحددة لأي مشروع معماري." },
+    { "title": "استشارات المشاريع", "description": "إرشاد متخصص للمهندسين المعماريين والمصممين حول اختيار الحجر وتطبيقاته." },
+    { "title": "التسليم في الوقت المحدد", "description": "إدارة فعالة لسلسلة التوريد لضمان وصول موادك في الوقت المطلوب." },
+    { "title": "شهادات الجودة", "description": "توثيق كامل والتحقق من جميع منتجات الحجر." },
+    { "title": "اختيار متميز", "description": "ألواح مختارة يدويًا من أفضل المحاجر المصرية." }
+  ],
   "about": {
     "title": "Our Story",
     "subtitle": "Crafting Excellence Since 2000",
@@ -218,6 +366,22 @@
       { "value": "30+", "label": "Countries Served" }
     ]
   },
+  "aboutAr": {
+    "title": "قصتنا",
+    "subtitle": "صناعة التميز منذ عام 2000",
+    "description": [
+      "تأسست شركة مقاولو هندسة الرخام (EMC) في عام 2015، بناءً على إرث شركة EMCO التي كانت ركيزة أساسية في صناعة الحجر المصري منذ عام 2000.",
+      "مهمتنا هي تقديم جمال الحجر الطبيعي المصري الخالد للعالم، من خلال الجمع بين الحرفية التقليدية والدقة الحديثة.",
+      "نفخر بالتزامنا بالجودة والاستدامة ورضا العملاء، حيث نخدم عملاء في أكثر من 30 دولة."
+    ],
+    "stats": [
+      { "value": "+25", "label": "سنوات خبرة" },
+      { "value": "+50", "label": "نوع حجر" },
+      { "value": "+30", "label": "دولة نخدمها" }
+    ],
+    "mission": "تقديم أجود أنواع الحجر الطبيعي المصري للعالم مع الحفاظ على أعلى معايير الجودة والحرفية.",
+    "vision": "أن نكون الرائد العالمي في تصدير الحجر المصري الفاخر، معروفين بالتميز والموثوقية."
+  },
   "contact": {
     "location": "Cairo, Egypt",
     "phone": "+20 XXX XXX XXXX",
@@ -227,6 +391,10 @@
       "instagram": "https://instagram.com/emc_egypt",
       "facebook": "https://facebook.com/emcegypt"
     }
+  },
+  "contactAr": {
+    "location": "القاهرة، مصر",
+    "address": "المنطقة الصناعية، مدينة العاشر من رمضان، القاهرة، مصر"
   },
   "siteSettings": {
     "siteName": "EMC - Engineering Marble Contractors",

@@ -1,0 +1,180 @@
+{
+  "kind": "singleType",
+  "collectionName": "ui_texts",
+  "info": {
+    "singularName": "ui-text",
+    "pluralName": "ui-texts",
+    "displayName": "UI Text",
+    "description": "All UI text strings for the website"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "navHome": {
+      "type": "string",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "navAbout": {
+      "type": "string",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "navProducts": {
+      "type": "string",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "navServices": {
+      "type": "string",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "navContact": {
+      "type": "string",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "navCustomizer": {
+      "type": "string",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "aboutSectionTitle": {
+      "type": "string",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "aboutSectionSubtitle": {
+      "type": "string",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "productsSectionTitle": {
+      "type": "string",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "productsSectionSubtitle": {
+      "type": "string",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "filterAll": {
+      "type": "string",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "filterMarble": {
+      "type": "string",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "filterGranite": {
+      "type": "string",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "filterOther": {
+      "type": "string",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "visualizeCta": {
+      "type": "string",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "servicesSectionTitle": {
+      "type": "string",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "servicesSectionSubtitle": {
+      "type": "string",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "contactSectionTitle": {
+      "type": "string",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "contactSectionSubtitle": {
+      "type": "string",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "formName": {
+      "type": "string",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "formEmail": {
+      "type": "string",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "formInterest": {
+      "type": "string",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "formMessage": {
+      "type": "string",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "formSubmit": {
+      "type": "string",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "infoLocation": {
+      "type": "string",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "infoPhone": {
+      "type": "string",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "infoEmail": {
+      "type": "string",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "footerTagline": {
+      "type": "string",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "footerProducts": {
+      "type": "string",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "footerCompany": {
+      "type": "string",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "footerCopyright": {
+      "type": "string",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "customizerTitle": {
+      "type": "string",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "customizerSelect": {
+      "type": "string",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "customizerMaterials": {
+      "type": "string",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "customizerViews": {
+      "type": "string",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "customizerFilter": {
+      "type": "string",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "customizerCountertop": {
+      "type": "string",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "customizerIsland": {
+      "type": "string",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "customizerBacksplash": {
+      "type": "string",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "customizerFloor": {
+      "type": "string",
+      "pluginOptions": { "i18n": { "localized": true } }
+    }
+  }
+}

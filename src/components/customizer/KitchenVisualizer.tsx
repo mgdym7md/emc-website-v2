@@ -27,18 +27,18 @@ export interface ViewPreset {
 }
 
 const defaultMaterials: Material[] = [
-  { id: 1, name: 'Galala Classic', type: 'marble', thumbnail: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=200', color: '#e8dcc8' },
-  { id: 2, name: 'Sunny Marble', type: 'marble', thumbnail: 'https://images.unsplash.com/photo-1615971677499-5467cbab01c0?w=200', color: '#f5e6c8' },
-  { id: 3, name: 'Sinai Pearl', type: 'marble', thumbnail: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=200', color: '#f0ebe5' },
-  { id: 4, name: 'Milly Grey', type: 'marble', thumbnail: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=200', color: '#9a9a9a' },
-  { id: 5, name: 'Imprador', type: 'marble', thumbnail: 'https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=200', color: '#8b6914' },
-  { id: 6, name: 'Breccia', type: 'marble', thumbnail: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=200', color: '#c4a882' },
-  { id: 7, name: 'Black Star', type: 'granite', thumbnail: 'https://images.unsplash.com/photo-1600573472591-ee6981cf81f0?w=200', color: '#1a1a1a' },
-  { id: 8, name: 'New Halayb', type: 'granite', thumbnail: 'https://images.unsplash.com/photo-1600566752734-2a0cd66c42b5?w=200', color: '#4a4a4a' },
-  { id: 9, name: 'Rosa Nasr', type: 'granite', thumbnail: 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=200', color: '#d4a5a5' },
-  { id: 10, name: 'Red Royal', type: 'granite', thumbnail: 'https://images.unsplash.com/photo-1600573472572-8aba3fca8d8a?w=200', color: '#8b3a3a' },
-  { id: 11, name: 'Verdi Green', type: 'granite', thumbnail: 'https://images.unsplash.com/photo-1600607687644-c7171b42498f?w=200', color: '#3a5a3a' },
-  { id: 12, name: 'Golden Sinai', type: 'granite', thumbnail: 'https://images.unsplash.com/photo-1600566753151-384129cf4e3e?w=200', color: '#c9a962' },
+  { id: 1, name: 'Galala Classic', type: 'marble', thumbnail: '', color: '#e8dcc8' },
+  { id: 2, name: 'Sunny Marble', type: 'marble', thumbnail: '', color: '#f5e6c8' },
+  { id: 3, name: 'Sinai Pearl', type: 'marble', thumbnail: '', color: '#f0ebe5' },
+  { id: 4, name: 'Milly Grey', type: 'marble', thumbnail: '', color: '#9a9a9a' },
+  { id: 5, name: 'Imprador', type: 'marble', thumbnail: '', color: '#8b6914' },
+  { id: 6, name: 'Breccia', type: 'marble', thumbnail: '', color: '#c4a882' },
+  { id: 7, name: 'Black Star', type: 'granite', thumbnail: '', color: '#1a1a1a' },
+  { id: 8, name: 'New Halayb', type: 'granite', thumbnail: '', color: '#4a4a4a' },
+  { id: 9, name: 'Rosa Nasr', type: 'granite', thumbnail: '', color: '#d4a5a5' },
+  { id: 10, name: 'Red Royal', type: 'granite', thumbnail: '', color: '#8b3a3a' },
+  { id: 11, name: 'Verdi Green', type: 'granite', thumbnail: '', color: '#3a5a3a' },
+  { id: 12, name: 'Golden Sinai', type: 'granite', thumbnail: '', color: '#c9a962' },
 ]
 
 const viewPresets: ViewPreset[] = [

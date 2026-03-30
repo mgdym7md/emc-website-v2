@@ -1,10 +1,15 @@
 // Strapi CMS API Helper Functions
 
-// Server-side: use internal Docker network URL for API calls
-// Client-side: use public URL for images loaded in browser
-const STRAPI_API_URL = process.env.STRAPI_URL || process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'
-const STRAPI_PUBLIC_URL = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'
-const STRAPI_TOKEN = process.env.STRAPI_API_TOKEN
+// Read env vars at runtime (not build time) to support Docker deployments
+function getStrapiApiUrl() {
+  return process.env.STRAPI_URL || process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'
+}
+function getStrapiPublicUrl() {
+  return process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'
+}
+function getStrapiToken() {
+  return process.env.STRAPI_API_TOKEN
+}
 
 // Types
 export interface Product {
@@ -123,18 +128,20 @@ const fallbackContact: ContactInfo = {
 function getStrapiMediaUrl(url: string | null | undefined): string {
   if (!url) return ''
   if (url.startsWith('http')) return url
-  return `${STRAPI_PUBLIC_URL}${url}`
+  return `${getStrapiPublicUrl()}${url}`
 }
 
 // Generic fetch function with error handling
 async function fetchAPI<T>(endpoint: string, fallback: T): Promise<T> {
   try {
-    const url = `${STRAPI_API_URL}/api${endpoint}`
+    const apiUrl = getStrapiApiUrl()
+    const token = getStrapiToken()
+    const url = `${apiUrl}/api${endpoint}`
     console.log(`[Strapi] Fetching: ${url}`)
     const res = await fetch(url, {
       headers: {
         'Content-Type': 'application/json',
-        ...(STRAPI_TOKEN && { Authorization: `Bearer ${STRAPI_TOKEN}` }),
+        ...(token && { Authorization: `Bearer ${token}` }),
       },
       cache: 'no-store', // Always fetch fresh data
     })

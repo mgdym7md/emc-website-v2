@@ -6,11 +6,12 @@ import { useLanguage } from '@/components/providers/LanguageProvider'
 import type { AboutContent } from '@/lib/strapi'
 
 interface AboutProps {
-  data: AboutContent
+  data: { en: AboutContent; ar: AboutContent }
 }
 
 export default function About({ data }: AboutProps) {
-  const { t } = useLanguage()
+  const { t, language } = useLanguage()
+  const about = data[language] || data.en
 
   return (
     <section id="about" className="section-padding bg-dark-secondary relative overflow-hidden">
@@ -30,18 +31,18 @@ export default function About({ data }: AboutProps) {
               {t('about.title')}
             </span>
             <h2 className="heading-primary text-accent-cream mb-8">
-              {data.subtitle}
+              {about.subtitle}
             </h2>
 
             <div className="space-y-6 text-accent-cream/70 leading-relaxed">
-              {data.description.map((paragraph, index) => (
+              {about.description.map((paragraph, index) => (
                 <p key={index}>{paragraph}</p>
               ))}
             </div>
 
             {/* Stats */}
             <div className="grid grid-cols-3 gap-8 mt-12 pt-8 border-t border-accent-gold/20">
-              {data.stats.map((stat, index) => (
+              {about.stats.map((stat, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
@@ -73,7 +74,7 @@ export default function About({ data }: AboutProps) {
               <div className="space-y-4">
                 <div className="aspect-[3/4] relative overflow-hidden bg-gradient-to-br from-accent-gold/20 to-accent-rose/20">
                   <Image
-                    src={data.images[0]}
+                    src={about.images[0]}
                     alt="EMC Stone Quarry"
                     fill
                     className="object-cover"
@@ -83,7 +84,7 @@ export default function About({ data }: AboutProps) {
               <div className="space-y-4 pt-12">
                 <div className="aspect-[3/4] relative overflow-hidden bg-gradient-to-br from-accent-rose/20 to-accent-gold/20">
                   <Image
-                    src={data.images[1]}
+                    src={about.images[1]}
                     alt="EMC Stone Craftsmanship"
                     fill
                     className="object-cover"

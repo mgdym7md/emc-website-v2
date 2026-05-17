@@ -6,11 +6,12 @@ import { useLanguage } from '@/components/providers/LanguageProvider'
 import type { HeroContent } from '@/lib/strapi'
 
 interface HeroProps {
-  data: HeroContent
+  data: { en: HeroContent; ar: HeroContent }
 }
 
 export default function Hero({ data }: HeroProps) {
-  const { t } = useLanguage()
+  const { t, language } = useLanguage()
+  const hero = data[language] || data.en
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -35,7 +36,7 @@ export default function Hero({ data }: HeroProps) {
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <span className="inline-block text-accent-gold/80 text-sm tracking-[0.3em] uppercase mb-6">
-            {data.tagline || t('hero.tagline')}
+            {hero.tagline || t('hero.tagline')}
           </span>
         </motion.div>
 
@@ -45,7 +46,7 @@ export default function Hero({ data }: HeroProps) {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="font-heading text-5xl md:text-7xl lg:text-8xl font-light tracking-wide mb-4"
         >
-          <span className="text-gradient">{data.title || t('hero.title')}</span>
+          <span className="text-gradient">{hero.title || t('hero.title')}</span>
         </motion.h1>
 
         <motion.h2
@@ -54,7 +55,7 @@ export default function Hero({ data }: HeroProps) {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="font-heading text-3xl md:text-4xl lg:text-5xl font-light text-accent-cream/80 mb-8"
         >
-          {data.subtitle || t('hero.subtitle')}
+          {hero.subtitle || t('hero.subtitle')}
         </motion.h2>
 
         <motion.p
@@ -63,7 +64,7 @@ export default function Hero({ data }: HeroProps) {
           transition={{ duration: 0.8, delay: 0.8 }}
           className="text-accent-cream/60 text-lg md:text-xl tracking-wide max-w-2xl mx-auto mb-12"
         >
-          {data.description || t('hero.description')}
+          {hero.description || t('hero.description')}
         </motion.p>
 
         <motion.div
@@ -73,10 +74,10 @@ export default function Hero({ data }: HeroProps) {
           className="flex flex-col sm:flex-row gap-4 justify-center"
         >
           <Link href="#products" className="btn-primary">
-            {data.ctaExploreText || t('hero.cta.explore')}
+            {hero.ctaExploreText || t('hero.cta.explore')}
           </Link>
           <Link href="#contact" className="btn-secondary">
-            {data.ctaQuoteText || t('hero.cta.quote')}
+            {hero.ctaQuoteText || t('hero.cta.quote')}
           </Link>
         </motion.div>
 
@@ -94,7 +95,7 @@ export default function Hero({ data }: HeroProps) {
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" />
             </svg>
-            <span className="text-sm tracking-wider uppercase">{data.customizerCtaText || t('hero.customizer')}</span>
+            <span className="text-sm tracking-wider uppercase">{hero.customizerCtaText || t('hero.customizer')}</span>
             <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
@@ -110,7 +111,7 @@ export default function Hero({ data }: HeroProps) {
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3"
       >
         <span className="text-accent-cream/40 text-xs tracking-widest uppercase">
-          {data.scrollText || t('hero.scroll')}
+          {hero.scrollText || t('hero.scroll')}
         </span>
         <div className="w-px h-12 bg-gradient-to-b from-accent-gold/50 to-transparent animate-pulse-slow" />
       </motion.div>

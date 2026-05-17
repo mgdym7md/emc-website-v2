@@ -30,17 +30,17 @@ export default function Footer({ logoUrl }: FooterProps) {
   }, [isHomePage, router])
 
   const productLinks = [
-    { id: 'products', label: 'Marble' },
-    { id: 'products', label: 'Granite' },
-    { id: 'products', label: 'Sandstone' },
-    { id: 'products', label: 'Basalt' },
+    { id: 'products', label: t('footer.marble') },
+    { id: 'products', label: t('footer.granite') },
+    { id: 'products', label: t('footer.sandstone') },
+    { id: 'products', label: t('footer.basalt') },
   ]
 
   const companyLinks = [
-    { id: 'about', label: 'About Us', isSection: true },
-    { id: 'services', label: 'Services', isSection: true },
-    { href: '/customizer', label: '3D Customizer', isSection: false },
-    { id: 'contact', label: 'Contact', isSection: true },
+    { id: 'about', label: t('footer.aboutUs'), isSection: true },
+    { id: 'services', label: t('footer.services'), isSection: true },
+    { href: '/customizer', label: t('footer.customizer'), isSection: false },
+    { id: 'contact', label: t('footer.contact'), isSection: true },
   ]
 
   const socialLinks = [
@@ -159,21 +159,21 @@ export default function Footer({ logoUrl }: FooterProps) {
 
           {/* Newsletter */}
           <div>
-            <h4 className="font-heading text-lg text-accent-gold mb-6">Stay Updated</h4>
+            <h4 className="font-heading text-lg text-accent-gold mb-6">{t('footer.newsletter')}</h4>
             <p className="text-accent-cream/60 text-sm mb-4">
-              Subscribe for the latest stone collections and industry insights.
+              {t('footer.newsletterDesc')}
             </p>
             <form className="flex gap-2" onSubmit={(e) => e.preventDefault()}>
               <input
                 type="email"
-                placeholder="Enter your email"
+                placeholder={t('footer.emailPlaceholder')}
                 className="flex-1 px-4 py-2 bg-dark-primary border border-accent-gold/20 text-accent-cream text-sm placeholder:text-accent-cream/40 focus:outline-none focus:border-accent-gold/50"
               />
               <button
                 type="submit"
                 className="px-4 py-2 bg-accent-gold text-dark-primary text-sm hover:bg-accent-cream transition-colors"
               >
-                Subscribe
+                {t('footer.subscribe')}
               </button>
             </form>
           </div>

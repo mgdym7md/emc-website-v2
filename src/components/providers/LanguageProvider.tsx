@@ -40,6 +40,7 @@ const hardcodedTranslations: Record<Language, Record<string, string>> = {
     'products.filter.marble': 'Marble',
     'products.filter.granite': 'Granite',
     'products.filter.other': 'Other Stones',
+    'products.visualize': 'Visualize in 3D Kitchen',
 
     // Services
     'services.title': 'Our Services',
@@ -62,6 +63,18 @@ const hardcodedTranslations: Record<Language, Record<string, string>> = {
     'footer.products': 'Products',
     'footer.company': 'Company',
     'footer.copyright': '© 2024 EMC. All rights reserved.',
+    'footer.marble': 'Marble',
+    'footer.granite': 'Granite',
+    'footer.sandstone': 'Sandstone',
+    'footer.basalt': 'Basalt',
+    'footer.aboutUs': 'About Us',
+    'footer.services': 'Services',
+    'footer.customizer': '3D Customizer',
+    'footer.contact': 'Contact',
+    'footer.newsletter': 'Stay Updated',
+    'footer.newsletterDesc': 'Subscribe for the latest stone collections and industry insights.',
+    'footer.emailPlaceholder': 'Enter your email',
+    'footer.subscribe': 'Subscribe',
 
     // 3D Customizer
     'customizer.title': '3D Kitchen Visualizer',
@@ -102,6 +115,7 @@ const hardcodedTranslations: Record<Language, Record<string, string>> = {
     'products.filter.marble': 'رخام',
     'products.filter.granite': 'جرانيت',
     'products.filter.other': 'أحجار أخرى',
+    'products.visualize': 'عرض في مطبخ ثلاثي الأبعاد',
 
     // Services
     'services.title': 'خدماتنا',
@@ -124,6 +138,18 @@ const hardcodedTranslations: Record<Language, Record<string, string>> = {
     'footer.products': 'المنتجات',
     'footer.company': 'الشركة',
     'footer.copyright': '© 2024 EMC. جميع الحقوق محفوظة.',
+    'footer.marble': 'رخام',
+    'footer.granite': 'جرانيت',
+    'footer.sandstone': 'حجر رملي',
+    'footer.basalt': 'بازلت',
+    'footer.aboutUs': 'من نحن',
+    'footer.services': 'الخدمات',
+    'footer.customizer': 'المصمم ثلاثي الأبعاد',
+    'footer.contact': 'اتصل بنا',
+    'footer.newsletter': 'ابقَ على اطلاع',
+    'footer.newsletterDesc': 'اشترك للحصول على أحدث مجموعات الأحجار والرؤى الصناعية.',
+    'footer.emailPlaceholder': 'أدخل بريدك الإلكتروني',
+    'footer.subscribe': 'اشترك',
 
     // 3D Customizer
     'customizer.title': 'مصمم المطبخ ثلاثي الأبعاد',

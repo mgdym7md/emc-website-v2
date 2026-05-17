@@ -282,13 +282,7 @@ export async function getLocalizedServices(): Promise<{ en: Service[]; ar: Servi
   return { en, ar }
 }
 
-export async function getAboutContent(): Promise<AboutContent> {
-  const data = await fetchAPI<any>('/about?populate=*', null)
-
-  if (!data) {
-    return fallbackAbout
-  }
-
+function parseAboutContent(data: any): AboutContent {
   const attrs = data.attributes || data
   const descriptionText = attrs.description || ''
 
@@ -311,6 +305,28 @@ export async function getAboutContent(): Promise<AboutContent> {
     mission: attrs.mission || fallbackAbout.mission,
     vision: attrs.vision || fallbackAbout.vision,
   }
+}
+
+export async function getAboutContent(): Promise<AboutContent> {
+  const data = await fetchAPI<any>('/about?populate=*', null)
+
+  if (!data) {
+    return fallbackAbout
+  }
+
+  return parseAboutContent(data)
+}
+
+export async function getLocalizedAboutContent(): Promise<{ en: AboutContent; ar: AboutContent }> {
+  const [enData, arData] = await Promise.all([
+    fetchAPI<any>('/about?populate=*&locale=en', null),
+    fetchAPI<any>('/about?populate=*&locale=ar', null),
+  ])
+
+  const en = enData ? parseAboutContent(enData) : fallbackAbout
+  const ar = arData ? parseAboutContent(arData) : en
+
+  return { en, ar }
 }
 
 export async function getContactInfo(): Promise<ContactInfo> {
@@ -361,13 +377,7 @@ export async function getSiteSettings(): Promise<SiteSettings> {
 }
 
 // Get hero content
-export async function getHeroContent(): Promise<HeroContent> {
-  const data = await fetchAPI<any>('/hero?populate=*', null, { revalidate: 300 })
-
-  if (!data) {
-    return fallbackHeroContent
-  }
-
+function parseHeroContent(data: any): HeroContent {
   const attrs = data.attributes || data
 
   return {
@@ -381,6 +391,28 @@ export async function getHeroContent(): Promise<HeroContent> {
     customizerCtaText: attrs.customizerCtaText || fallbackHeroContent.customizerCtaText,
     backgroundImageUrl: getStrapiMediaUrl(attrs.backgroundImage?.data?.attributes?.url || attrs.backgroundImage?.url) || null,
   }
+}
+
+export async function getHeroContent(): Promise<HeroContent> {
+  const data = await fetchAPI<any>('/hero?populate=*', null, { revalidate: 300 })
+
+  if (!data) {
+    return fallbackHeroContent
+  }
+
+  return parseHeroContent(data)
+}
+
+export async function getLocalizedHeroContent(): Promise<{ en: HeroContent; ar: HeroContent }> {
+  const [enData, arData] = await Promise.all([
+    fetchAPI<any>('/hero?populate=*&locale=en', null, { revalidate: 300 }),
+    fetchAPI<any>('/hero?populate=*&locale=ar', null, { revalidate: 300 }),
+  ])
+
+  const en = enData ? parseHeroContent(enData) : fallbackHeroContent
+  const ar = arData ? parseHeroContent(arData) : en
+
+  return { en, ar }
 }
 
 // Mapping from Strapi ui-text field names to translation keys

@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 import { useLanguage } from '@/components/providers/LanguageProvider'
@@ -10,24 +10,50 @@ interface ProductsProps {
   data: { en: Product[]; ar: Product[] }
 }
 
-type FilterType = 'all' | 'marble' | 'granite' | 'other'
-
 export default function Products({ data }: ProductsProps) {
   const { t, language } = useLanguage()
-  const [activeFilter, setActiveFilter] = useState<FilterType>('all')
+  const [activeFilter, setActiveFilter] = useState<string>('all')
 
-  const products = data[language] || data.en
+  const enProducts = data.en
+  const products = data[language] || enProducts
 
-  const filters: { key: FilterType; label: string }[] = [
-    { key: 'all', label: t('products.filter.all') },
-    { key: 'marble', label: t('products.filter.marble') },
-    { key: 'granite', label: t('products.filter.granite') },
-    { key: 'other', label: t('products.filter.other') },
-  ]
+  // Build filters dynamically from product categories
+  // Use English products for stable filter keys, localized products for display labels
+  const filters = useMemo(() => {
+    // Get unique categories preserving order from English products
+    const uniqueCategories: string[] = []
+    for (const p of enProducts) {
+      const cat = p.category || p.type
+      if (!uniqueCategories.includes(cat)) {
+        uniqueCategories.push(cat)
+      }
+    }
+
+    // Build a map from English category -> localized label
+    const labelMap: Record<string, string> = {}
+    for (let i = 0; i < enProducts.length; i++) {
+      const enCat = enProducts[i].category || enProducts[i].type
+      if (!labelMap[enCat] && products[i]) {
+        labelMap[enCat] = products[i].category || products[i].type
+      }
+    }
+
+    return [
+      { key: 'all', label: t('products.filter.all') },
+      ...uniqueCategories.map(cat => ({
+        key: cat,
+        label: labelMap[cat] || cat,
+      })),
+    ]
+  }, [enProducts, products, t])
 
   const filteredProducts = products.filter(product => {
     if (activeFilter === 'all') return true
-    return product.type === activeFilter
+    // Match against the English category key
+    const idx = products.indexOf(product)
+    const enProduct = enProducts[idx]
+    const enCat = enProduct ? (enProduct.category || enProduct.type) : (product.category || product.type)
+    return enCat === activeFilter
   })
 
   return (
@@ -99,7 +125,7 @@ export default function Products({ data }: ProductsProps) {
                 <div className="absolute bottom-0 left-0 right-0 p-6">
                   <div className="flex items-center gap-2 mb-2">
                     <span className="px-2 py-1 bg-accent-gold/20 text-accent-gold text-xs tracking-wider uppercase">
-                      {product.type}
+                      {product.category || product.type}
                     </span>
                   </div>
                   <h3 className="font-heading text-xl text-accent-cream group-hover:text-accent-gold transition-colors">
@@ -130,7 +156,7 @@ export default function Products({ data }: ProductsProps) {
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" />
             </svg>
-            Visualize in 3D Kitchen
+            {t('products.visualize')}
           </a>
         </motion.div>
       </div>

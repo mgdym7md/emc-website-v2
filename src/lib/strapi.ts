@@ -274,7 +274,7 @@ export async function getAboutContent(): Promise<AboutContent> {
     title: attrs.title || fallbackAbout.title,
     subtitle: attrs.subtitle || fallbackAbout.subtitle,
     description: descriptionArray,
-    stats: attrs.stats || fallbackAbout.stats,
+    stats: Array.isArray(attrs.stats) ? attrs.stats : fallbackAbout.stats,
     images: attrs.images?.data?.map((img: any) => getStrapiMediaUrl(img.attributes?.url)) || fallbackAbout.images,
     mission: attrs.mission || fallbackAbout.mission,
     vision: attrs.vision || fallbackAbout.vision,

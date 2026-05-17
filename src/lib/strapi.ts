@@ -213,13 +213,7 @@ async function fetchAPI<T>(endpoint: string, fallback: T, options?: { revalidate
 }
 
 // API Functions
-export async function getProducts(): Promise<Product[]> {
-  const data = await fetchAPI<any[]>('/products?populate=*&sort=order:asc', [])
-
-  if (!Array.isArray(data) || data.length === 0) {
-    return fallbackProducts
-  }
-
+function parseProducts(data: any[]): Product[] {
   return data.map((item: any) => ({
     id: item.id,
     name: item.attributes?.name || item.name,
@@ -234,13 +228,29 @@ export async function getProducts(): Promise<Product[]> {
   }))
 }
 
-export async function getServices(): Promise<Service[]> {
-  const data = await fetchAPI<any[]>('/services?populate=*&sort=order:asc', [])
+export async function getProducts(): Promise<Product[]> {
+  const data = await fetchAPI<any[]>('/products?populate=*&sort=order:asc', [])
 
   if (!Array.isArray(data) || data.length === 0) {
-    return fallbackServices
+    return fallbackProducts
   }
 
+  return parseProducts(data)
+}
+
+export async function getLocalizedProducts(): Promise<{ en: Product[]; ar: Product[] }> {
+  const [enData, arData] = await Promise.all([
+    fetchAPI<any[]>('/products?populate=*&sort=order:asc&locale=en', []),
+    fetchAPI<any[]>('/products?populate=*&sort=order:asc&locale=ar', []),
+  ])
+
+  const en = Array.isArray(enData) && enData.length > 0 ? parseProducts(enData) : fallbackProducts
+  const ar = Array.isArray(arData) && arData.length > 0 ? parseProducts(arData) : en
+
+  return { en, ar }
+}
+
+function parseServices(data: any[]): Service[] {
   return data.map((item: any) => ({
     id: item.id,
     title: item.attributes?.title || item.title,
@@ -248,6 +258,28 @@ export async function getServices(): Promise<Service[]> {
     icon: item.attributes?.icon || item.icon,
     order: item.attributes?.order || item.order || 0,
   }))
+}
+
+export async function getServices(): Promise<Service[]> {
+  const data = await fetchAPI<any[]>('/services?populate=*&sort=order:asc', [])
+
+  if (!Array.isArray(data) || data.length === 0) {
+    return fallbackServices
+  }
+
+  return parseServices(data)
+}
+
+export async function getLocalizedServices(): Promise<{ en: Service[]; ar: Service[] }> {
+  const [enData, arData] = await Promise.all([
+    fetchAPI<any[]>('/services?populate=*&sort=order:asc&locale=en', []),
+    fetchAPI<any[]>('/services?populate=*&sort=order:asc&locale=ar', []),
+  ])
+
+  const en = Array.isArray(enData) && enData.length > 0 ? parseServices(enData) : fallbackServices
+  const ar = Array.isArray(arData) && arData.length > 0 ? parseServices(arData) : en
+
+  return { en, ar }
 }
 
 export async function getAboutContent(): Promise<AboutContent> {

@@ -7,14 +7,16 @@ import { useLanguage } from '@/components/providers/LanguageProvider'
 import type { Product } from '@/lib/strapi'
 
 interface ProductsProps {
-  data: Product[]
+  data: { en: Product[]; ar: Product[] }
 }
 
 type FilterType = 'all' | 'marble' | 'granite' | 'other'
 
 export default function Products({ data }: ProductsProps) {
-  const { t } = useLanguage()
+  const { t, language } = useLanguage()
   const [activeFilter, setActiveFilter] = useState<FilterType>('all')
+
+  const products = data[language] || data.en
 
   const filters: { key: FilterType; label: string }[] = [
     { key: 'all', label: t('products.filter.all') },
@@ -23,7 +25,7 @@ export default function Products({ data }: ProductsProps) {
     { key: 'other', label: t('products.filter.other') },
   ]
 
-  const filteredProducts = data.filter(product => {
+  const filteredProducts = products.filter(product => {
     if (activeFilter === 'all') return true
     return product.type === activeFilter
   })

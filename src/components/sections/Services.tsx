@@ -5,7 +5,7 @@ import { useLanguage } from '@/components/providers/LanguageProvider'
 import type { Service } from '@/lib/strapi'
 
 interface ServicesProps {
-  data: Service[]
+  data: { en: Service[]; ar: Service[] }
 }
 
 const iconMap: Record<string, JSX.Element> = {
@@ -42,7 +42,9 @@ const iconMap: Record<string, JSX.Element> = {
 }
 
 export default function Services({ data }: ServicesProps) {
-  const { t } = useLanguage()
+  const { t, language } = useLanguage()
+
+  const services = data[language] || data.en
 
   return (
     <section id="services" className="section-padding bg-dark-secondary relative overflow-hidden">
@@ -70,7 +72,7 @@ export default function Services({ data }: ServicesProps) {
 
         {/* Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {data.map((service, index) => (
+          {services.map((service, index) => (
             <motion.div
               key={service.id}
               initial={{ opacity: 0, y: 30 }}

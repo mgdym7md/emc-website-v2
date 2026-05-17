@@ -216,7 +216,7 @@ async function fetchAPI<T>(endpoint: string, fallback: T, options?: { revalidate
 export async function getProducts(): Promise<Product[]> {
   const data = await fetchAPI<any[]>('/products?populate=*&sort=order:asc', [])
 
-  if (!data || data.length === 0) {
+  if (!Array.isArray(data) || data.length === 0) {
     return fallbackProducts
   }
 
@@ -237,7 +237,7 @@ export async function getProducts(): Promise<Product[]> {
 export async function getServices(): Promise<Service[]> {
   const data = await fetchAPI<any[]>('/services?populate=*&sort=order:asc', [])
 
-  if (!data || data.length === 0) {
+  if (!Array.isArray(data) || data.length === 0) {
     return fallbackServices
   }
 
@@ -275,7 +275,7 @@ export async function getAboutContent(): Promise<AboutContent> {
     subtitle: attrs.subtitle || fallbackAbout.subtitle,
     description: descriptionArray,
     stats: Array.isArray(attrs.stats) ? attrs.stats : fallbackAbout.stats,
-    images: attrs.images?.data?.map((img: any) => getStrapiMediaUrl(img.attributes?.url)) || fallbackAbout.images,
+    images: Array.isArray(attrs.images?.data) ? attrs.images.data.map((img: any) => getStrapiMediaUrl(img.attributes?.url)) : fallbackAbout.images,
     mission: attrs.mission || fallbackAbout.mission,
     vision: attrs.vision || fallbackAbout.vision,
   }
